@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.IniciarSesion"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="1" HorizontalOptions="Center">
+                    <Label Text="Bienvenido"
+                           TextColor="#0715F4"
+                           FontSize="22"
+                           WidthRequest="300"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Grid.Row="2" HorizontalOptions="Center">
+                    <Label Text="Inicio de Sesión"
+                           TextColor="Gray"
+                           FontSize="13"
+                           WidthRequest="300"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Grid.Row="3" HorizontalOptions="Center">
+                    <Label Text="Email"
+                           TextColor="Black"
+                           FontSize="15"
+                           WidthRequest="300"
+                           VerticalOptions="Center"
+                           FontAttributes="Bold"/>
+                    <Entry WidthRequest="300"
+                           HeightRequest="50"
+                           TextColor="Black"
+                           Placeholder="ejemplo@email.com"
+                           FontSize="15"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Keyboard="Email"
+                           HorizontalTextAlignment="Start"
+                           MaxLength="50" Text="{Binding EmailTxt, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="Password"
+                           TextColor="Black"
+                           FontSize="15"
+                           WidthRequest="300"
+                           FontAttributes="Bold"/>
+                    <Entry WidthRequest="300"
+                           HeightRequest="50"
+                           Placeholder="*********************"
+                           TextColor="Black"
+                           FontSize="15"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Keyboard="Text"
+                           IsPassword="True"
+                           HorizontalTextAlignment="Start"
+                           MaxLength="50"
+                           Text="{Binding PasswordTxt, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="5" HorizontalOptions="Center" WidthRequest="300" Orientation="Horizontal">
+                    <CheckBox HorizontalOptions="Start"
+                              VerticalOptions="Center"
+                              Color="#767677"/>
+                    <Label Text="Recuerdame"
+                           TextColor="#767677"
+                           VerticalOptions="Center"
+                           FontSize="13"
+                           FontAttributes="Bold"/>
+                    <Image WidthRequest="15"/>
+                    <Button Text="¿Olvidaste la contraseña?"
+                            TextColor="#2CA669"
+                            WidthRequest="150"
+                            HeightRequest="50"
+                            FontSize="11"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            VerticalOptions="Start"
+                            HorizontalOptions="End"/>
+                </StackLayout>
+                <StackLayout Grid.Row="6" HorizontalOptions="Center" Orientation="Vertical" Margin="15">
+                    <ActivityIndicator Color="#B4995D"></ActivityIndicator>
+                    <Frame Padding="0,4,0,4" HasShadow="True">
+                        <Button Text="Iniciar Sesión"
+                                HeightRequest="35"
+                                TextColor="#2CA669"
+                                BackgroundColor="White"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                Command="{Binding LoginCommand}" />
+                    </Frame>
+                    <Button Text="Crear Cuenta"
+                            HeightRequest="35"
+                            WidthRequest="300"
+                            TextColor="#2CA669"
+                            BackgroundColor="White"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            Command="{Binding NewAccountCommand}" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

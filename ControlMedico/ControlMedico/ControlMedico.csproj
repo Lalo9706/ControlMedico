@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="MySqlConnector" Version="2.1.11" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="2.0.9699" />
+    <PackageReference Include="Xb.Core" Version="1.0.13" />
+    <PackageReference Include="Xb.Db" Version="1.0.11" />
+    <PackageReference Include="Xb.Db.MySql" Version="1.0.3" />
+  </ItemGroup>
+
+    <ItemGroup>
+	    <Compile Update="Views\IniciarSesion.xaml.cs">
+		    <DependentUpon>IniciarSesion.xaml</DependentUpon>
+	    </Compile>
+	    <Compile Update="Views\PrincipalMedico.xaml.cs">
+		    <DependentUpon>PrincipalMedico.xaml</DependentUpon>
+	    </Compile>
+    </ItemGroup>
+	
+  <ItemGroup>
+    <EmbeddedResource Update="View\IniciarSesion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PrincipalMedico.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PrincipalPaciente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
