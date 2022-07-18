@@ -35,10 +35,13 @@
     <EmbeddedResource Update="View\IniciarSesion.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\PrincipalMedico.xaml">
+    <EmbeddedResource Update="View\ViewMedico\piepagina.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ViewMedico\PrincipalMedico.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\PrincipalPaciente.xaml">
+    <EmbeddedResource Update="View\ViewPaciente\PrincipalPaciente.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

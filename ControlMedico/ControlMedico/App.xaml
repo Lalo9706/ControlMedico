@@ -3,6 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ControlMedico.App">
     <Application.Resources>
-
+        <Style x:Key="lblPiePagina" TargetType="Label">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="imagePiePagina" TargetType="Image" >
+            <Setter Property="HeightRequest" Value="30"/>
+        </Style>
     </Application.Resources>
 </Application>

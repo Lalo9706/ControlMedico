@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.ViewMedico.piepagina">
+
+    <Grid ColumnDefinitions="*,*,*,*,*" Margin="-20,5">
+        <StackLayout>
+            <Image Source ="https://i.ibb.co/LzwFDf9/casa-1.png" Style="{StaticResource imagePiePagina}"/>
+            <Label Text="Inicio" Style="{StaticResource lblPiePagina}" />
+        </StackLayout>
+        <StackLayout Grid.Column="1">
+            <Image Source ="https://cdn.icon-icons.com/icons2/2265/PNG/512/crowd_patient_patients_icon_140420.png" Style="{StaticResource imagePiePagina}"/>
+            <Label Text="Pacientes" Style="{StaticResource lblPiePagina}" />
+        </StackLayout>
+        <Grid HorizontalOptions="Center"
+              VerticalOptions="Start"
+              Grid.Column="2">
+            <Button HeightRequest="48"
+                        WidthRequest="60"
+                        VerticalOptions="Start"
+                        BackgroundColor="Plum"
+                        CornerRadius="12"
+                        />
+            <Label Text="+" FontSize="35" VerticalOptions="Start" HorizontalOptions="Center"/>
+        </Grid>
+        <StackLayout Grid.Column="3">
+            <Image Source ="https://cdn.icon-icons.com/icons2/3523/PNG/512/user_interface_ui_avatar_profile_icon_221212.png" Style="{StaticResource imagePiePagina}"/>
+            <Label Text="Perfil" Style="{StaticResource lblPiePagina}" />
+        </StackLayout>
+        <StackLayout Grid.Column="4">
+            <Image Source ="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/300px-Icon-round-Question_mark.svg.png?20120912110201" Style="{StaticResource imagePiePagina}"/>
+            <Label Text="No Disponible" Style="{StaticResource lblPiePagina}" />
+        </StackLayout>
+    </Grid>
+ 
+        
+
+</ContentView>

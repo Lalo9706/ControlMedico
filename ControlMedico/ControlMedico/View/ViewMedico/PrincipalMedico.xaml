@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ControlMedico.ViewModel"
+             xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+             xmlns:controls="clr-namespace:System.Globalization;assembly=System.Globalization"
+             xmlns:ViewMedico="clr-namespace:ControlMedico.View.ViewMedico"
+             x:DataType="viewmodel:PrincipalMedicoViewModel"           
+             x:Class="ControlMedico.View.PrincipalMedico"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <Grid BackgroundColor="White" RowDefinitions="*,70">
+        <StackLayout Grid.Row="0">
+            <Label Text="Bienvenido" TextColor="Black" Margin="11" FontSize="20"/>
+            <plugin:Calendar CalendarLayout="Week" SwipeUpToHideEnabled="True"
+                               WeekViewUnit="MonthName"
+                               MonthLabelColor="Black"
+                               ArrowsColor="Black"
+                               Culture="{Binding CultureInfo}"
+                               ShowYearPicker="False"
+                               BackgroundColor="CadetBlue"
+                               DeselectedDayTextColor="Black"
+                               SelectedDayTextColor="White"
+                               SelectedDayBackgroundColor="Purple"
+                               TodayOutlineColor="White"
+                               SelectedDateColor="White"                              
+                               SelectedDate="{Binding FechaSeleccionada}"
+                               OtherMonthDayColor="Blue"                            
+                               />
+            <Label Text="Citas para hoy:" TextColor="Black" Margin="11" FontSize="15" FontAttributes="Bold"/>
+            <!-- <Button Text="Prueba fecha" Command="{Binding PruebaFechaCommand}"/> -->
+        </StackLayout>
+        <StackLayout Grid.Row="1">
+            <ListView x:Name="citas"
+                      ItemsSource="{Binding ItemViewSource}"
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" >
+                                    <Label Text="{Binding hora}" FontSize="20" />
+                                    <Label Text="{Binding descripcion}" FontSize="12" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                 
+            </ListView>
+        </StackLayout>
+        <ViewMedico:piepagina Grid.Row="2" Margin="27,5"/>
+    </Grid>
+
+
+</ContentPage>
