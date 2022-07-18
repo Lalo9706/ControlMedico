@@ -14,6 +14,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
     <PackageReference Include="MySqlConnector" Version="2.1.11" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Xamarin.Plugin.Calendar" Version="2.0.9699" />
@@ -29,13 +30,22 @@
 	    <Compile Update="Views\PrincipalMedico.xaml.cs">
 		    <DependentUpon>PrincipalMedico.xaml</DependentUpon>
 	    </Compile>
+	    <Compile Update="View\ViewMedico\NavegacionMedico.xaml.cs">
+	      <DependentUpon>NavegacionMedico.xaml</DependentUpon>
+	    </Compile>
     </ItemGroup>
 	
   <ItemGroup>
     <EmbeddedResource Update="View\IniciarSesion.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\ViewMedico\piepagina.xaml">
+    <EmbeddedResource Update="View\ViewMedico\Monitor.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ViewMedico\NavegacionMedico.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ViewMedico\Pacientes.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ViewMedico\PrincipalMedico.xaml">

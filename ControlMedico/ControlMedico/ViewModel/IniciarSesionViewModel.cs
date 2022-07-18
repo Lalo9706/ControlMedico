@@ -8,10 +8,12 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using ControlMedico.View;
 using System.Threading.Tasks;
+using ControlMedico.View.ViewMedico;
+using ControlMedico.Data;
 
 namespace ControlMedico.ViewModel
 {
-    public class IniciarSesionViewModel : BaseViewModel
+    public class IniciarSesionViewModel  : BaseViewModel
     {
         #region Attributes
         private string email;
@@ -65,9 +67,18 @@ namespace ControlMedico.ViewModel
                     if (usuario.IdUsuario != 0)
                     {
                         Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Bienvenido " + usuario.Nombre, "Aceptar");
-                        if (usuario.TipoUsuario == MEDICO) { Application.Current.MainPage.Navigation.PushAsync(new PrincipalMedico(usuario)); }
-                        if (usuario.TipoUsuario == PACIENTE) { Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Abriendo Vista del Paciente", "Aceptar"); }
-                        /*Application.Current.MainPage.Navigation.PushAsync(new PrincipalPaciente(usuario)); */
+                        if (usuario.TipoUsuario == MEDICO)
+                        {
+                            Settings.IdMedico = usuario.IdUsuario;
+                            Application.Current.MainPage.Navigation.PushAsync(new NavegacionMedico()); 
+                        }
+                        if (usuario.TipoUsuario == PACIENTE)
+                        {
+                            Settings.IdPaciente = usuario.IdUsuario;
+                            Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Abriendo Vista del Paciente", "Aceptar");
+                            /*Application.Current.MainPage.Navigation.PushAsync(new PrincipalPaciente(usuario)); */
+                        }
+
                     }
                     else { Application.Current.MainPage.DisplayAlert("Datos incorrectos", "Verifique su información", "Aceptar"); }
                 }

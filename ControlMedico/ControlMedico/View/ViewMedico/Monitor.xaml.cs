@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ControlMedico.View.ViewMedico
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class piepagina : ContentView
+    public partial class Monitor : ContentPage
     {
-        public piepagina()
+        public Monitor()
         {
             InitializeComponent();
         }

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.ViewMedico.Pacientes">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Aqui se mostrará la lista de Pacientes"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Probar Paciente" Command="{Binding PruebaUsuario}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

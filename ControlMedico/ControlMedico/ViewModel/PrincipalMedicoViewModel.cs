@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using ControlMedico.Data;
 using ControlMedico.Data.Model;
 using ControlMedico.Data.Repository;
 using ControlMedico.Model;
@@ -20,7 +21,7 @@ namespace ControlMedico.ViewModel
         #region AttributesPrincipal
         public CultureInfo CultureInfo => new CultureInfo("es-ES");
         private DateTime fechaSeleccionada = DateTime.Today;
-        public Usuario usuario;
+        public Usuario medico;
         public List<Cita> Citas = new List<Cita>();
         #endregion
 
@@ -77,20 +78,19 @@ namespace ControlMedico.ViewModel
 
         public async Task CargarCitas()
         {
-            this.ListViewSource = await CitaRepository.RecuperarCitasMedico(usuario.IdUsuario);
+            this.ListViewSource = await CitaRepository.RecuperarCitasMedico(medico.IdUsuario);
         }
         private void ProbarFecha()
         {
             //Application.Current.MainPage.DisplayAlert("Fecha:",fechaSeleccionada.ToString("yyyy-MM-dd"),"Aceptar");
-            Application.Current.MainPage.DisplayAlert("Usuario:",usuario.Nombre + fechaSeleccionada.ToString("yyyy-MM-dd"),"Aceptar");
+            Application.Current.MainPage.DisplayAlert("Usuario:", medico.Nombre + "\n"+ fechaSeleccionada.ToString("yyyy-MM-dd"), "Aceptar");
         }
+
         #endregion
 
         #region Constructor
-        public PrincipalMedicoViewModel(Usuario usuario)
-        {
-            this.usuario = usuario;
-        }
+
+
         #endregion
     }
 }

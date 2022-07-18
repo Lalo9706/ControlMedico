@@ -28,11 +28,11 @@
                                OtherMonthDayColor="Blue"                            
                                />
             <Label Text="Citas para hoy:" TextColor="Black" Margin="11" FontSize="15" FontAttributes="Bold"/>
-            <!-- <Button Text="Prueba fecha" Command="{Binding PruebaFechaCommand}"/> -->
+            <Button Text="Prueba fecha" Command="{Binding PruebaFechaCommand}"/>
         </StackLayout>
         <StackLayout Grid.Row="1">
-            <ListView x:Name="citas"
-                      ItemsSource="{Binding ItemViewSource}"
+            <ListView x:Name="citas" 
+                      ItemsSource="{Binding ListViewSource}"
                       HasUnevenRows="True"
                       IsPullToRefreshEnabled="True"
                       IsRefreshing="{Binding IsRefreshing}">
@@ -48,18 +48,16 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" >
-                                    <Label Text="{Binding hora}" FontSize="20" />
-                                    <Label Text="{Binding descripcion}" FontSize="12" />
+                                    <Label Text="{Binding Hora}" FontSize="20" />
+                                    <Label Text="{Binding Descripcion}" FontSize="12" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                 
             </ListView>
         </StackLayout>
-        <ViewMedico:piepagina Grid.Row="2" Margin="27,5"/>
+        <!-- <ViewMedico: Grid.Row="2" Margin="27,5"/>-->
     </Grid>
-
 
 </ContentPage>

@@ -9,21 +9,20 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ControlMedico.View
+namespace ControlMedico.View.ViewMedico
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PrincipalMedico : ContentPage
+    public partial class Pacientes : ContentPage
     {
-        public PrincipalMedico()
+        public Pacientes()
         {
             InitializeComponent();
-        }
-        public PrincipalMedico(Usuario usuario)
-        {
-            InitializeComponent();
-            BindingContext = new PrincipalMedicoViewModel();
         }
 
-        
+        public Pacientes(Usuario usuario)
+        {
+            InitializeComponent();
+            BindingContext = new PacientesViewModel();
+        }
     }
 }
