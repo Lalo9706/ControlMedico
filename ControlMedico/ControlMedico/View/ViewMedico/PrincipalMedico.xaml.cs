@@ -17,13 +17,8 @@ namespace ControlMedico.View
         public PrincipalMedico()
         {
             InitializeComponent();
-        }
-        public PrincipalMedico(Usuario usuario)
-        {
-            InitializeComponent();
             BindingContext = new PrincipalMedicoViewModel();
         }
-
         
     }
 }

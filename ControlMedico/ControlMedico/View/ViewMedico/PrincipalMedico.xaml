@@ -25,7 +25,8 @@
                                TodayOutlineColor="White"
                                SelectedDateColor="White"                              
                                SelectedDate="{Binding FechaSeleccionada}"
-                               OtherMonthDayColor="Blue"                            
+                               OtherMonthDayColor="Blue"
+                               
                                />
             <Label Text="Citas para hoy:" TextColor="Black" Margin="11" FontSize="15" FontAttributes="Bold"/>
             <Button Text="Prueba fecha" Command="{Binding PruebaFechaCommand}"/>
@@ -40,13 +41,18 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60"/>
-                                </Grid.RowDefinitions>
+                                <!-- Columna -->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
+                                
+                                <!-- Filas -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60"/>
+                                </Grid.RowDefinitions>
+                                
+                                <!-- Datos mostrados por cada elemento-->
                                 <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" >
                                     <Label Text="{Binding Hora}" FontSize="20" />
                                     <Label Text="{Binding Descripcion}" FontSize="12" />

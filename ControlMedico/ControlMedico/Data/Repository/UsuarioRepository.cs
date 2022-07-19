@@ -8,9 +8,17 @@ namespace ControlMedico.Data.Repository
 {
     internal class UsuarioRepository
     {
-        private static String QUERY_INICIAR_SESION =
+
+        #region SQL_QUERY
+        private static string QUERY_INICIAR_SESION =
             "SELECT idUsuario, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefonoLocal, telefonoCelular, " +
             "domicilio, tipoUsuario FROM usuario WHERE correoElectronico = @correo AND contrasena = @contrasena";
+
+        public static string QUERY_RECUPERAR_USUARIO =
+            "SELECT nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefonoLocal, telefonoCelular, " +
+            "domicilio, tipoUsuario, correoElectronico, contrasena FROM usuario WHERE idUsuario = @idUsuario";
+
+        #endregion
 
         internal static Usuario IniciarSesion(string correo, string contraseña)
         {
@@ -40,6 +48,49 @@ namespace ControlMedico.Data.Repository
                         usuario.Contraseña = contraseña;
                     }
                     else if(respuestaBD == null)
+                    {
+                        usuario.IdUsuario = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    conexionBD.Close();
+                }
+            }
+            return usuario;
+        }
+
+        internal static Usuario RecuperarUsuario(int idUsuario)
+        {
+            Usuario usuario = null;
+            MySqlConnection conexionBD = ConexionMySQL.ObtenerConexion();
+            if (conexionBD != null)
+            {
+                try
+                {
+                    MySqlCommand mySqlCommand = new MySqlCommand(QUERY_RECUPERAR_USUARIO, conexionBD);
+                    mySqlCommand.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    MySqlDataReader respuestaBD = mySqlCommand.ExecuteReader();
+                    usuario = new Usuario();
+                    if (respuestaBD.Read())
+                    {
+                        usuario.IdUsuario = idUsuario;
+                        usuario.Nombre = respuestaBD.GetString(0);
+                        usuario.ApellidoPaterno = respuestaBD.GetString(1);
+                        usuario.ApellidoMaterno = respuestaBD.GetString(2);
+                        usuario.FechaNacimiento = respuestaBD.GetDateTime(3);
+                        usuario.TelefonoLocal = respuestaBD.GetString(4);
+                        usuario.TelefonoCelular = respuestaBD.GetString(5);
+                        usuario.Domicilio = respuestaBD.GetString(6);
+                        usuario.TipoUsuario = respuestaBD.GetInt32(7);
+                        usuario.CorreoElectronico = respuestaBD.GetString(8);
+                        usuario.Contraseña = respuestaBD.GetString(9);
+                    }
+                    else if (respuestaBD == null)
                     {
                         usuario.IdUsuario = 0;
                     }

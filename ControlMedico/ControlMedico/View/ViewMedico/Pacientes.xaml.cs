@@ -17,11 +17,6 @@ namespace ControlMedico.View.ViewMedico
         public Pacientes()
         {
             InitializeComponent();
-        }
-
-        public Pacientes(Usuario usuario)
-        {
-            InitializeComponent();
             BindingContext = new PacientesViewModel();
         }
     }

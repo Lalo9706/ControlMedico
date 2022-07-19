@@ -8,7 +8,17 @@ namespace ControlMedico.Data.Repository
 {
     internal class CitaRepository
     {
-        internal static Task<List<Cita>> RecuperarCitasMedico(int idUsuario)
+        #region
+        private static string QUERY_RECUPERAR_CITAS_MEDICO =
+            "SELECT ";
+        #endregion
+
+        internal static Task<List<Cita>> RecuperarCitasMedico(int idMedico)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static Task<List<Cita>> RecuperarCitasPaciente(int idPaciente)
         {
             throw new NotImplementedException();
         }

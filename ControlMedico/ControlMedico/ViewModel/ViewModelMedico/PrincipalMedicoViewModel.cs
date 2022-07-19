@@ -21,7 +21,7 @@ namespace ControlMedico.ViewModel
         #region AttributesPrincipal
         public CultureInfo CultureInfo => new CultureInfo("es-ES");
         private DateTime fechaSeleccionada = DateTime.Today;
-        public Usuario medico;
+        public Usuario medico = UsuarioRepository.RecuperarUsuario(Settings.IdMedico);
         public List<Cita> Citas = new List<Cita>();
         #endregion
 
