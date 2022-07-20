@@ -10,6 +10,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         #region Attriutes
 
         public string nombrePaciente;
+        public List<string> pickerSource = new List<string>();
 
         #endregion
 
@@ -19,6 +20,11 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         {
             get { return this.nombrePaciente; }
             set { SetValue(ref this.nombrePaciente, value); }
+        }
+
+        public List<string> PickerSource
+        {
+            get { return new List<string> {"Aldo, Esteban, Alfredo" }; }
         }
 
         #endregion

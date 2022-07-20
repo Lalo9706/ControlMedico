@@ -20,7 +20,7 @@ namespace ControlMedico.Data.Repository
 
         public static string QUERY_RECUPERAR_PACIENTES =
             "SELECT idPaciente, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefonoLocal, telefonoCelular, " +
-            "domicilio, tipoUsuario, correoElectronico FROM usuario INNER JOIN medicopaciente ON usuario.idUsuario = medicopaciente.idPaciente WHERE medicopaciente.idMedico = 1";
+            "domicilio, tipoUsuario, correoElectronico FROM usuario INNER JOIN medicopaciente ON usuario.idUsuario = medicopaciente.idPaciente WHERE medicopaciente.idMedico = @idMedico";
 
         #endregion
 

@@ -2,37 +2,44 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ControlMedico.View.ViewMedico.Pacientes">
-    <ContentPage.Content>
-        <ListView x:Name="pacientes"                    
+    <Grid>
+        <StackLayout Grid.Row="0">
+            <ListView x:Name="pacientes"                 
                       HasUnevenRows="True"
                       BackgroundColor="AliceBlue"
-                      ItemsSource="{Binding ListViewSource}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell IsContextActionsLegacyModeEnabled="True">
-                        <Grid>
-                            <!-- Filas -->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="60"/>
-                            </Grid.RowDefinitions>
-                            <!-- Columnas -->
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <!-- Datos mostrados por cada elemento-->
-                            <StackLayout Padding="15,0"
+                      ItemsSource="{Binding ListViewSource}"
+                      IsPullToRefreshEnabled="True"                   
+                      IsRefreshing="{Binding IsRefreshing}"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsContextActionsLegacyModeEnabled="True">
+                            <Grid>
+                                <!-- Filas -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60"/>
+                                </Grid.RowDefinitions>
+                                <!-- Columnas -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <!-- Datos mostrados por cada elemento-->
+                                <StackLayout Padding="15,0"
                                          Grid.Column="1" Grid.Row="0"
                                          HorizontalOptions="CenterAndExpand"
                                          VerticalOptions="CenterAndExpand" 
-                                         BackgroundColor="Transparent"
-                                         >
-                                <Label Text="{Binding NombrePaciente}" FontSize="15" TextColor="Black"/>
-                            </StackLayout>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ContentPage.Content>
+                                         BackgroundColor="Transparent">
+                                    <Label Text="{Binding Nombre}" FontSize="15" TextColor="Black"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <Button Text="Programar Cita" Command="{Binding VerPacienteCommand}"/>
+        </StackLayout>
+        
+    </Grid>
 </ContentPage>

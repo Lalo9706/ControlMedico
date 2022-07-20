@@ -4,8 +4,20 @@
              x:Class="ControlMedico.View.ViewMedico.Monitor"
              BackgroundColor="White"
              >
-    <Grid Margin="11" RowDefinitions="20,*">
-        <Label Text="{Binding NombrePaciente}" TextColor="Black" Grid.Row="0"/>
+    <Grid RowDefinitions="50,*">
+        <StackLayout Margin="5" Grid.Row="0">
+            <Picker BackgroundColor="White"
+                    TitleColor="Black"
+                    HorizontalTextAlignment="Center"
+                    Title="Selecciona un Paciente"
+                    ItemsSource="{Binding PickerSource}"
+                   />
+            
+        </StackLayout>
+        <StackLayout Grid.Row="1">
+            <Label Margin="11" Text="Nombre Paciente:" TextColor="Black"/>
+        </StackLayout>
+        
     </Grid>
     
 

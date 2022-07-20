@@ -5,12 +5,12 @@
              xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
              xmlns:controls="clr-namespace:System.Globalization;assembly=System.Globalization"
              xmlns:ViewMedico="clr-namespace:ControlMedico.View.ViewMedico"
-             x:DataType="viewmodel:PrincipalMedicoViewModel"           
-             x:Class="ControlMedico.View.PrincipalMedico"
+             x:DataType="viewmodel:PrincipalMedicoViewModel"
+             x:Class="ControlMedico.View.ViewMedico.PrincipalMedico"
              NavigationPage.HasNavigationBar="False"
 
              >
-    <Grid BackgroundColor="White" RowDefinitions="270,*">
+    <Grid>
         <StackLayout Grid.Row="0" BackgroundColor="White">
             <Label Text="Bienvenido" TextColor="Black" Margin="10,5" FontSize="20"/>
             <plugin:Calendar CalendarLayout="Week" SwipeUpToHideEnabled="True"
@@ -36,12 +36,10 @@
         <StackLayout Grid.Row="1">
             <ListView x:Name="citas"                    
                       HasUnevenRows="True"
-                      IsPullToRefreshEnabled="True"
-                      ItemsSource="{Binding ListViewSource}"
-                      IsRefreshing="{Binding IsRefreshing}"   
                       BackgroundColor="AliceBlue"
-                      
-                      >
+                      ItemsSource="{Binding ListViewSource}"
+                      IsPullToRefreshEnabled="True"                   
+                      IsRefreshing="{Binding IsRefreshing}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell IsContextActionsLegacyModeEnabled="True">
@@ -56,16 +54,18 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <!-- Datos mostrados por cada elemento-->
-                                <StackLayout Padding="15,0" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
+                                <StackLayout Padding="15,0"
+                                         Grid.Column="1" Grid.Row="0" 
+                                         HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="CenterAndExpand"
+                                         BackgroundColor="Transparent">
                                     <Label Text="{Binding Hora}" FontSize="15" TextColor="Black"/>
-                                    <Label Text="{Binding Descripcion}" FontSize="15" TextColor="Black"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </StackLayout>
     </Grid>
     

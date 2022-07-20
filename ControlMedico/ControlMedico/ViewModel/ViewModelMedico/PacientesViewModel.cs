@@ -15,6 +15,8 @@ namespace ControlMedico.ViewModel
         #region Attributes
         public object listViewSource = UsuarioRepository.RecuperarPacientesMedico(Settings.IdMedico);
         public string nombrePaciente;
+        public int idMedico = Settings.IdMedico;
+        public bool isRefreshing = false;
         #endregion
 
 
@@ -31,9 +33,14 @@ namespace ControlMedico.ViewModel
             set { SetValue(ref this.nombrePaciente, value); }
         }
 
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set { SetValue(ref this.isRefreshing, value); }
+        }
         #endregion
 
-        #region Commands
+            #region Commands
 
         public ICommand VerPacienteCommand
         {
@@ -48,7 +55,10 @@ namespace ControlMedico.ViewModel
 
         private void VerPaciente()
         {
-            Application.Current.MainPage.DisplayAlert("Aviso", "Mostrando información del paciente", "Aceptar");
+            this.IsRefreshing = true;
+            Application.Current.MainPage.DisplayAlert("Aviso", "IDMedico" + idMedico, "Ok");
+            //Application.Current.MainPage.DisplayAlert("Aviso", "Mostrando información del paciente", "Aceptar");
+            this.IsRefreshing = false;
         }
 
         #endregion

@@ -18,21 +18,19 @@ namespace ControlMedico.ViewModel
     internal class PrincipalMedicoViewModel : BaseViewModel
     {
 
-        #region AttributesPrincipal
+        #region Attributes
+        public object listViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, DateTime.Today);
+        public string hora;
+        public string descripcion;
+        public bool isRefreshing = false;
         public CultureInfo CultureInfo => new CultureInfo("es-ES");
         private DateTime fechaSeleccionada = DateTime.Today;
         public Usuario medico = UsuarioRepository.RecuperarUsuario(Settings.IdMedico);
-        public object listViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, DateTime.Today);
+        
         public string lblDiaSeleccionado = "Citas para Hoy";
 
         #endregion
 
-        #region AttributesCitaListView
-        public string hora;
-        public string descripcion;
-        public bool isRefreshing = false;
-
-        #endregion
 
         #region Properties
         public DateTime FechaSeleccionada
