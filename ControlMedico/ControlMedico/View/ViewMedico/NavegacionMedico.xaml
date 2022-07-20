@@ -4,7 +4,7 @@
              x:Class="ControlMedico.View.ViewMedico.NavegacionMedico"
             xmlns:local="clr-namespace:ControlMedico.View.ViewMedico"
             NavigationPage.HasNavigationBar="False">
-    <local:PrincipalMedico Title="Inicio" IconImageSource="home.png"/>
+    <local:InicioMedico Title="Inicio" IconImageSource="home.png"/>
     <local:Pacientes Title="Pacientes" IconImageSource="patients.png"/>
     <local:Monitor Title="Monitor" IconImageSource="monitor.png"/>
 

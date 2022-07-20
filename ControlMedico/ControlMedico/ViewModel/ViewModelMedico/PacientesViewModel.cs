@@ -42,9 +42,9 @@ namespace ControlMedico.ViewModel
 
             #region Commands
 
-        public ICommand VerPacienteCommand
+        public ICommand ProgramarCitaCommand
         {
-            get { return new RelayCommand(VerPaciente); }
+            get { return new RelayCommand(ProgramarCita); }
             set { }
         }
 
@@ -53,8 +53,9 @@ namespace ControlMedico.ViewModel
 
         #region Methods
 
-        private void VerPaciente()
+        private void ProgramarCita()
         {
+            
             this.IsRefreshing = true;
             Application.Current.MainPage.DisplayAlert("Aviso", "IDMedico" + idMedico, "Ok");
             //Application.Current.MainPage.DisplayAlert("Aviso", "Mostrando información del paciente", "Aceptar");

@@ -9,7 +9,8 @@
                       BackgroundColor="AliceBlue"
                       ItemsSource="{Binding ListViewSource}"
                       IsPullToRefreshEnabled="True"                   
-                      IsRefreshing="{Binding IsRefreshing}"  >
+                      IsRefreshing="{Binding IsRefreshing}"
+                      ItemSelected="{Binding PacienteSeleccionado}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell IsContextActionsLegacyModeEnabled="True">
@@ -38,7 +39,7 @@
             </ListView>
         </StackLayout>
         <StackLayout VerticalOptions="End">
-            <Button Text="Programar Cita" Command="{Binding VerPacienteCommand}"/>
+            <Button Text="Programar Cita" Command="{Binding ProgramarCitaCommand}"/>
         </StackLayout>
         
     </Grid>
