@@ -12,7 +12,7 @@ namespace ControlMedico
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new NavegacionMedico());
+            MainPage = new NavigationPage(new IniciarSesion());
         }
 
         protected override void OnStart()

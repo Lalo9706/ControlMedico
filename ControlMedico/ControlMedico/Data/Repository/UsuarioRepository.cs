@@ -18,6 +18,10 @@ namespace ControlMedico.Data.Repository
             "SELECT nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefonoLocal, telefonoCelular, " +
             "domicilio, tipoUsuario, correoElectronico, contrasena FROM usuario WHERE idUsuario = @idUsuario";
 
+        public static string QUERY_RECUPERAR_PACIENTES =
+            "SELECT idPaciente, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefonoLocal, telefonoCelular, " +
+            "domicilio, tipoUsuario, correoElectronico FROM usuario INNER JOIN medicopaciente ON usuario.idUsuario = medicopaciente.idPaciente WHERE medicopaciente.idMedico = 1";
+
         #endregion
 
 
@@ -107,6 +111,49 @@ namespace ControlMedico.Data.Repository
                 }
             }
             return usuario;
+        }
+
+        public static List<Usuario> RecuperarPacientesMedico(int idMedico)
+        {
+            List<Usuario> pacientes = null;
+            MySqlConnection conexionBD = ConexionMySQL.ObtenerConexion();
+            if (conexionBD != null)
+            {
+                try
+                {
+                    MySqlCommand mySqlCommand = new MySqlCommand(QUERY_RECUPERAR_PACIENTES, conexionBD);
+                    mySqlCommand.Parameters.AddWithValue("@idMedico", idMedico);
+                    MySqlDataReader respuestaBD = mySqlCommand.ExecuteReader();
+                    pacientes = new List<Usuario>();
+                    if (respuestaBD.HasRows)
+                    {
+                        while (respuestaBD.Read())
+                        {
+                            Usuario paciente = new Usuario();
+                            paciente.IdUsuario = respuestaBD.GetInt16(0);
+                            paciente.Nombre = respuestaBD.GetString(1);
+                            paciente.ApellidoPaterno = respuestaBD.GetString(2);
+                            paciente.ApellidoMaterno = respuestaBD.GetString(3);
+                            paciente.FechaNacimiento = respuestaBD.GetDateTime(4);
+                            paciente.TelefonoLocal = respuestaBD.GetString(5);
+                            paciente.TelefonoCelular = respuestaBD.GetString(6);
+                            paciente.Domicilio = respuestaBD.GetString(7);
+                            paciente.TipoUsuario = respuestaBD.GetInt32(8);
+                            paciente.CorreoElectronico = respuestaBD.GetString(9);
+                            pacientes.Add(paciente);
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    conexionBD.Close();
+                }
+            }
+            return pacientes;
         }
 
         #endregion

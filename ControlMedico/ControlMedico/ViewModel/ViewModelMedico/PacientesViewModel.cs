@@ -13,7 +13,8 @@ namespace ControlMedico.ViewModel
     internal class PacientesViewModel : BaseViewModel
     {
         #region Attributes
-        public object listViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, DateTime.Today);
+        public object listViewSource = UsuarioRepository.RecuperarPacientesMedico(Settings.IdMedico);
+        public string nombrePaciente;
         #endregion
 
 
@@ -22,6 +23,12 @@ namespace ControlMedico.ViewModel
         {
             get { return this.listViewSource; }
             set { SetValue(ref this.listViewSource, value); }
+        }
+
+        public string NombrePaciente
+        {
+            get { return this.nombrePaciente;}
+            set { SetValue(ref this.nombrePaciente, value); }
         }
 
         #endregion
@@ -41,7 +48,7 @@ namespace ControlMedico.ViewModel
 
         private void VerPaciente()
         {
-            throw new NotImplementedException();
+            Application.Current.MainPage.DisplayAlert("Aviso", "Mostrando información del paciente", "Aceptar");
         }
 
         #endregion

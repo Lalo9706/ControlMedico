@@ -5,12 +5,8 @@
     <ContentPage.Content>
         <ListView x:Name="pacientes"                    
                       HasUnevenRows="True"
-                      IsPullToRefreshEnabled="True"
-                      ItemsSource="{Binding ListViewSource}"
-                      IsRefreshing="{Binding IsRefreshing}"   
                       BackgroundColor="AliceBlue"
-                      
-                      >
+                      ItemsSource="{Binding ListViewSource}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell IsContextActionsLegacyModeEnabled="True">
@@ -25,7 +21,12 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <!-- Datos mostrados por cada elemento-->
-                            <StackLayout Padding="15,0" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
+                            <StackLayout Padding="15,0"
+                                         Grid.Column="1" Grid.Row="0"
+                                         HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="CenterAndExpand" 
+                                         BackgroundColor="Transparent"
+                                         >
                                 <Label Text="{Binding NombrePaciente}" FontSize="15" TextColor="Black"/>
                             </StackLayout>
                         </Grid>

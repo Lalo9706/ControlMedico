@@ -16,9 +16,9 @@ namespace ControlMedico.View
     {
         public PrincipalMedico()
         {
-            InitializeComponent();
-            BindingContext = new PrincipalMedicoViewModel();
             
+            InitializeComponent();
+            BindingContext = new PrincipalMedicoViewModel();           
         }
         
     }
