@@ -14,7 +14,7 @@ namespace ControlMedico.ViewModel
     {
         #region Attributes
         public object listViewSource = UsuarioRepository.RecuperarPacientesMedico(Settings.IdMedico);
-        public string nombrePaciente;
+        public string nombreCompleto;
         public int idMedico = Settings.IdMedico;
         public bool isRefreshing = false;
         #endregion
@@ -29,8 +29,8 @@ namespace ControlMedico.ViewModel
 
         public string NombrePaciente
         {
-            get { return this.nombrePaciente;}
-            set { SetValue(ref this.nombrePaciente, value); }
+            get { return this.nombreCompleto;}
+            set { SetValue(ref this.nombreCompleto, value); }
         }
 
         public bool IsRefreshing

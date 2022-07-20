@@ -140,6 +140,7 @@ namespace ControlMedico.Data.Repository
                             paciente.Domicilio = respuestaBD.GetString(7);
                             paciente.TipoUsuario = respuestaBD.GetInt32(8);
                             paciente.CorreoElectronico = respuestaBD.GetString(9);
+                            paciente.NombreCompleto = respuestaBD.GetString(1) + " " + respuestaBD.GetString(2) + " " + respuestaBD.GetString(3);
                             pacientes.Add(paciente);
                         }
                     }

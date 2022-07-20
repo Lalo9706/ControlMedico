@@ -10,6 +10,7 @@ namespace ControlMedico.Model
         public String Nombre { get; set; }
         public String ApellidoPaterno { get; set; }
         public String ApellidoMaterno { get; set; }
+        public String NombreCompleto { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public String TelefonoLocal { get; set; }
         public String TelefonoCelular { get; set; }

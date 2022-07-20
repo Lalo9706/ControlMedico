@@ -10,7 +10,8 @@
                       ItemsSource="{Binding ListViewSource}"
                       IsPullToRefreshEnabled="True"                   
                       IsRefreshing="{Binding IsRefreshing}"
-                      ItemSelected="{Binding PacienteSeleccionado}">
+                      Scrolled="OnListViewScrolled"
+                      >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell IsContextActionsLegacyModeEnabled="True">
@@ -30,7 +31,7 @@
                                          HorizontalOptions="CenterAndExpand"
                                          VerticalOptions="CenterAndExpand" 
                                          BackgroundColor="Transparent">
-                                    <Label Text="{Binding Nombre}" FontSize="15" TextColor="Black"/>
+                                    <Label Text="{Binding NombreCompleto}" FontSize="15" TextColor="Black"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

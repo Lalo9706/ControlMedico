@@ -2,6 +2,7 @@
 using ControlMedico.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,12 @@ namespace ControlMedico.View.ViewMedico
         {
             InitializeComponent();
             BindingContext = new PacientesViewModel();
+        }
+
+        void OnListViewScrolled(object sender, ScrolledEventArgs e)
+        {
+            Debug.WriteLine("ScrollX: " + e.ScrollX);
+            Debug.WriteLine("ScrollY: " + e.ScrollY);
         }
     }
 }
