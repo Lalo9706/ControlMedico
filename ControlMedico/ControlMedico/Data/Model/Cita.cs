@@ -8,8 +8,8 @@ namespace ControlMedico.Data.Model
     {
         public int IdCita { get; set; }
         public DateTime Fecha { get; set; }
-        public DateTime Hora { get; set; }
-        public String DescripcionCita { get; set; }
+        public string Hora { get; set; }
+        public string Descripcion { get; set; }
         public int IdMedico { get; set; }
         public int IdPaciente { get; set; }
     }

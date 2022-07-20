@@ -3,11 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ControlMedico.View.ViewMedico.Pacientes">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Aqui se mostrará la lista de Pacientes"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="Probar Paciente" Command="{Binding PruebaUsuario}" />
-        </StackLayout>
+        <ListView x:Name="pacientes"                    
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="True"
+                      ItemsSource="{Binding ListViewSource}"
+                      IsRefreshing="{Binding IsRefreshing}"   
+                      BackgroundColor="AliceBlue"
+                      
+                      >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell IsContextActionsLegacyModeEnabled="True">
+                        <Grid>
+                            <!-- Filas -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                            </Grid.RowDefinitions>
+                            <!-- Columnas -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Datos mostrados por cada elemento-->
+                            <StackLayout Padding="15,0" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
+                                <Label Text="{Binding NombrePaciente}" FontSize="15" TextColor="Black"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

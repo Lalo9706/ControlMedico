@@ -22,14 +22,16 @@ namespace ControlMedico.ViewModel
         public CultureInfo CultureInfo => new CultureInfo("es-ES");
         private DateTime fechaSeleccionada = DateTime.Today;
         public Usuario medico = UsuarioRepository.RecuperarUsuario(Settings.IdMedico);
-        public List<Cita> Citas = new List<Cita>();
+        public object listViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, DateTime.Today);
+        public string lblDiaSeleccionado = "Citas para Hoy";
+
         #endregion
 
         #region AttributesCitaListView
-        public DateTime hora;
+        public string hora;
         public string descripcion;
         public bool isRefreshing = false;
-        public Object listViewSource;
+
         #endregion
 
         #region Properties
@@ -39,10 +41,11 @@ namespace ControlMedico.ViewModel
             set { SetValue(ref this.fechaSeleccionada, value); }
         }
 
-        public DateTime Hora
+        public string Hora
         {
             get { return this.hora; }
             set { SetValue(ref this.hora, value); }
+
         }
 
         public string Descripcion
@@ -57,38 +60,60 @@ namespace ControlMedico.ViewModel
             set { SetValue(ref this.isRefreshing, value); }
         }
 
-        public Object ListViewSource
+        public object ListViewSource
         {
             get { return this.listViewSource; }
             set { SetValue(ref this.listViewSource, value); }
         }
 
+        public string LblDiaSeleccionado
+        {
+            get { return this.lblDiaSeleccionado; }
+            set { SetValue(ref this.lblDiaSeleccionado, value); }
+        }
+
+
 
         #endregion
 
         #region Commands
-        public ICommand PruebaFechaCommand
+
+        public ICommand FechaSeleccionadaCommand
         {
-            get { return new RelayCommand(ProbarFecha); }
+            get { return new RelayCommand(RecuperarCitasPorFecha); }
             set { }
         }
+
         #endregion
 
         #region Methods
 
-        public async Task CargarCitas()
+        /*private void CargarCitas()
         {
-            this.ListViewSource = await CitaRepository.RecuperarCitasMedico(medico.IdUsuario);
-        }
-        private void ProbarFecha()
+            this.listViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico);
+        }*/
+
+        public void RecuperarCitasPorFecha()
         {
-            //Application.Current.MainPage.DisplayAlert("Fecha:",fechaSeleccionada.ToString("yyyy-MM-dd"),"Aceptar");
-            Application.Current.MainPage.DisplayAlert("Usuario:", medico.Nombre + "\n"+ fechaSeleccionada.ToString("yyyy-MM-dd"), "Aceptar");
+            this.IsRefreshing = true;
+            this.ListViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, fechaSeleccionada);
+            if(FechaSeleccionada == DateTime.Today)
+            {
+                this.LblDiaSeleccionado = "Citas para Hoy";
+            }
+            else
+            {
+                this.LblDiaSeleccionado = "Citas para el dia " + FechaSeleccionada.ToString("dd/MM/yyyy");
+            }
+            
+            this.IsRefreshing = false;
         }
+
 
         #endregion
 
         #region Constructor
+
 
 
         #endregion

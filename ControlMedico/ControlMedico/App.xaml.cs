@@ -1,4 +1,5 @@
 ﻿using ControlMedico.View;
+using ControlMedico.View.ViewMedico;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace ControlMedico
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new IniciarSesion());
+            MainPage = new NavigationPage(new NavegacionMedico());
         }
 
         protected override void OnStart()

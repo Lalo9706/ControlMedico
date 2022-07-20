@@ -20,6 +20,8 @@ namespace ControlMedico.Data.Repository
 
         #endregion
 
+
+        #region METHODS
         internal static Usuario IniciarSesion(string correo, string contraseña)
         {
             Usuario usuario = null;
@@ -52,7 +54,7 @@ namespace ControlMedico.Data.Repository
                         usuario.IdUsuario = 0;
                     }
                 }
-                catch (Exception ex)
+                catch (MySqlException ex)
                 {
                     Console.WriteLine(ex);
                 }
@@ -95,7 +97,7 @@ namespace ControlMedico.Data.Repository
                         usuario.IdUsuario = 0;
                     }
                 }
-                catch (Exception ex)
+                catch (MySqlException ex)
                 {
                     Console.WriteLine(ex);
                 }
@@ -106,5 +108,7 @@ namespace ControlMedico.Data.Repository
             }
             return usuario;
         }
+
+        #endregion
     }
 }

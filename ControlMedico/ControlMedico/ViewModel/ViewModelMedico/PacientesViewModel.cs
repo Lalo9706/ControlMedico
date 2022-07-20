@@ -12,19 +12,38 @@ namespace ControlMedico.ViewModel
 {
     internal class PacientesViewModel : BaseViewModel
     {
-        public Usuario paciente = UsuarioRepository.RecuperarUsuario(Settings.IdMedico);
+        #region Attributes
+        public object listViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, DateTime.Today);
+        #endregion
 
-        public ICommand PruebaUsuario
+
+        #region Properties
+        public object ListViewSource
         {
-            get { return new RelayCommand(ProbarUsuario); }
+            get { return this.listViewSource; }
+            set { SetValue(ref this.listViewSource, value); }
+        }
+
+        #endregion
+
+        #region Commands
+
+        public ICommand VerPacienteCommand
+        {
+            get { return new RelayCommand(VerPaciente); }
             set { }
         }
 
-        private void ProbarUsuario()
-        {
-            Application.Current.MainPage.DisplayAlert("Paciente:", paciente.Nombre, "Aceptar");
+        #endregion
 
+
+        #region Methods
+
+        private void VerPaciente()
+        {
+            throw new NotImplementedException();
         }
 
+        #endregion
     }
 }
