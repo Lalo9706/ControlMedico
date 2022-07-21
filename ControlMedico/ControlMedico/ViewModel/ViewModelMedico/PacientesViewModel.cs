@@ -29,7 +29,7 @@ namespace ControlMedico.ViewModel
 
         public string NombrePaciente
         {
-            get { return this.nombreCompleto;}
+            get { return this.nombreCompleto; }
             set { SetValue(ref this.nombreCompleto, value); }
         }
 
@@ -38,29 +38,18 @@ namespace ControlMedico.ViewModel
             get { return this.isRefreshing; }
             set { SetValue(ref this.isRefreshing, value); }
         }
+
         #endregion
 
-            #region Commands
+        #region Commands
 
-        public ICommand ProgramarCitaCommand
-        {
-            get { return new RelayCommand(ProgramarCita); }
-            set { }
-        }
+
 
         #endregion
 
 
         #region Methods
 
-        private void ProgramarCita()
-        {
-            
-            this.IsRefreshing = true;
-            Application.Current.MainPage.DisplayAlert("Aviso", "IDMedico" + idMedico, "Ok");
-            //Application.Current.MainPage.DisplayAlert("Aviso", "Mostrando información del paciente", "Aceptar");
-            this.IsRefreshing = false;
-        }
 
         #endregion
     }

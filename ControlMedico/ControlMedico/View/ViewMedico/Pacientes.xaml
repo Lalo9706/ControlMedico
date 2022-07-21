@@ -11,6 +11,7 @@
                       IsPullToRefreshEnabled="True"                   
                       IsRefreshing="{Binding IsRefreshing}"
                       Scrolled="OnListViewScrolled"
+                      ItemSelected="pacientes_ItemSelected"
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -40,7 +41,7 @@
             </ListView>
         </StackLayout>
         <StackLayout VerticalOptions="End">
-            <Button Text="Programar Cita" Command="{Binding ProgramarCitaCommand}"/>
+            <Button Text="Programar Cita" Clicked="ProgramarCita_Clicked"/>
         </StackLayout>
         
     </Grid>

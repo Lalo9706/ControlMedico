@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.ViewMedico.NuevaCita">
+    <Grid>
+        <Grid Margin="20" RowDefinitions="40,40,40,40,40,40" ColumnDefinitions="150">
+            <Label Text="Nueva Cita" FontSize="20"/>
+            <Label Text="Paciente: " Grid.Row="1"/>
+            <Label Text="Fecha de la cita:" Grid.Row="2"/>
+            <Label Text="{Binding NombreCompletoPaciente}" Grid.Row="1" Grid.Column="1"/>
+            <DatePicker Grid.Row="2" Grid.Column="1"/>
+
+
+
+
+        </Grid>
+        <!--<Grid Margin="20" RowDefinitions="40,40,*" >
+            <Label Text="Descripción de la Cita:" Grid.Row="3"/>
+            <Entry Grid.Row="4" AnchorX="400" AnchorY="400" />
+            <Button Text="Guardar Cita" Command="{Binding GuardarCitaCommand}" Grid.Row="9" VerticalOptions="End"/>
+        </Grid>-->
+        
+
+    </Grid>
+    
+
+</ContentPage>

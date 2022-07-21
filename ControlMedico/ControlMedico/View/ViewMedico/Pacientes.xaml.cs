@@ -15,6 +15,8 @@ namespace ControlMedico.View.ViewMedico
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Pacientes : ContentPage
     {
+
+        Usuario pacienteSeleccionado = new Usuario();
         public Pacientes()
         {
             InitializeComponent();
@@ -25,6 +27,16 @@ namespace ControlMedico.View.ViewMedico
         {
             Debug.WriteLine("ScrollX: " + e.ScrollX);
             Debug.WriteLine("ScrollY: " + e.ScrollY);
+        }
+
+        private void pacientes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            pacienteSeleccionado = (Usuario)e.SelectedItem;
+        }
+
+        private void ProgramarCita_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NuevaCita(pacienteSeleccionado));
         }
     }
 }
