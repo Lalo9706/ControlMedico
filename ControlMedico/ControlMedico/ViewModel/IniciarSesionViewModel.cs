@@ -16,8 +16,8 @@ namespace ControlMedico.ViewModel
     public class IniciarSesionViewModel  : BaseViewModel
     {
         #region Attributes
-        private string email;
-        private string password;
+        private string email = "";
+        private string password = "";
         private Usuario usuario;
         private int MEDICO = 1;
         private int PACIENTE = 2;

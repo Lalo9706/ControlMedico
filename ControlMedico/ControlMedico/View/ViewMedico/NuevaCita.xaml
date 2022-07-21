@@ -2,26 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ControlMedico.View.ViewMedico.NuevaCita">
-    <Grid>
-        <Grid Margin="20" RowDefinitions="40,40,40,40,40,40" ColumnDefinitions="150">
-            <Label Text="Nueva Cita" FontSize="20"/>
-            <Label Text="Paciente: " Grid.Row="1"/>
-            <Label Text="Fecha de la cita:" Grid.Row="2"/>
-            <Label Text="{Binding NombreCompletoPaciente}" Grid.Row="1" Grid.Column="1"/>
-            <DatePicker Grid.Row="2" Grid.Column="1"/>
-
-
-
-
+    <StackLayout>
+        <Grid Margin="20" RowDefinitions="40,40,40,40" ColumnDefinitions="150">
+            <Label Text="Nueva Cita" FontSize="25" FontAttributes="Bold"/>
+            <Label Text="Paciente: " Grid.Row="1"  FontSize="18" VerticalOptions="Center"/>
+            <Label Text="{Binding NombreCompletoPaciente}" Grid.Row="1" Grid.Column="1" FontSize="15" VerticalOptions="Center"/>
+            <Label Text="Fecha de la cita:" Grid.Row="2" FontSize="18" VerticalOptions="Center"/>
+            <DatePicker Grid.Row="2" Grid.Column="1" VerticalOptions="Center" Date="{Binding FechaSeleccionada}" />
+            <Label Text="Hora: " FontSize="18" VerticalOptions="Center" Grid.Row="3"/>
+            <TimePicker Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Format="hh:mm:tt" Time="{Binding HoraSeleccionada}" />
+            
         </Grid>
-        <!--<Grid Margin="20" RowDefinitions="40,40,*" >
-            <Label Text="Descripción de la Cita:" Grid.Row="3"/>
-            <Entry Grid.Row="4" AnchorX="400" AnchorY="400" />
-            <Button Text="Guardar Cita" Command="{Binding GuardarCitaCommand}" Grid.Row="9" VerticalOptions="End"/>
-        </Grid>-->
+        <Grid Margin="20" RowDefinitions="40,40" >
+            <Label Text="Descripción de la Cita:" Grid.Row="0" FontSize="18" VerticalOptions="Center"/>
+            <Editor Grid.Row="1" AutoSize="TextChanges" Text="{Binding DescripcionTxt, Mode=TwoWay}"/>
+            <Button Text="Guardar Cita" Command="{Binding GuardarCitaCommand}" Grid.Row="6" VerticalOptions="End"/>
+        </Grid>
         
 
-    </Grid>
+    </StackLayout>
     
 
 </ContentPage>

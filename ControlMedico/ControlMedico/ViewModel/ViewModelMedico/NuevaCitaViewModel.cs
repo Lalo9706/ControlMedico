@@ -1,4 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using ControlMedico.Data;
+using ControlMedico.Data.Model;
+using ControlMedico.Data.Repository;
 using ControlMedico.Model;
 using System;
 using System.Collections.Generic;
@@ -13,8 +16,9 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #region Attributes
         private Usuario paciente;
-        //private string nombreCompletoPaciente;
         private DateTime fechaSeleccionada = DateTime.Today;
+        private TimeSpan horaSeleccionada;
+        private string descripcionTxt = "";
         #endregion
 
         #region Properties
@@ -30,6 +34,18 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             set { SetValue(ref this.fechaSeleccionada, value); }
         }
 
+        public TimeSpan HoraSeleccionada
+        {
+            get { return this.horaSeleccionada; }
+            set { SetValue(ref this.horaSeleccionada, value); }
+        }
+
+        public string DescripcionTxt
+        {
+            get { return this.descripcionTxt; }
+            set { SetValue(ref this.descripcionTxt, value); }
+        }
+
         #endregion
 
 
@@ -43,7 +59,26 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         private void GuardarCita()
         {
-            Application.Current.MainPage.DisplayAlert("Aviso", "Probando fecha: " + FechaSeleccionada.ToString("dd/MM/yyyy"), "Aceptar");
+            if(DescripcionTxt != "")
+            {
+                Cita nuevaCita = new Cita();
+                nuevaCita.Descripcion = DescripcionTxt;
+                nuevaCita.Fecha = FechaSeleccionada;
+                nuevaCita.Hora = HoraSeleccionada.ToString();
+                nuevaCita.IdMedico = Settings.IdMedico;
+                nuevaCita.IdPaciente = paciente.IdUsuario;
+                int respuesta = CitaRepository.GuardarCita(nuevaCita);
+                if(respuesta != 0)
+                {
+                    Application.Current.MainPage.DisplayAlert("Aviso", "La Cita se guardó co exito", "Aceptar");
+                    Application.Current.MainPage.Navigation.PopAsync();
+                }
+
+            }
+
+            
+
+            
         }
 
 
