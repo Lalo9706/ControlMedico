@@ -49,7 +49,7 @@
                                 <StackLayout Padding="15,0"
                                          Grid.Column="1" Grid.Row="0"
                                          HorizontalOptions="CenterAndExpand"
-                                         VerticalOptions="CenterAndExpand" 
+                                         VerticalOptions="CenterAndExpand"
                                          BackgroundColor="Transparent">
                                     <Label Text="{Binding Hora}" FontSize="15" TextColor="Black"/>
                                     <Label Text="{Binding Descripcion}" FontSize="15" TextColor="Black"/>
@@ -60,7 +60,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        
-        
     </Grid>
 </ContentPage>

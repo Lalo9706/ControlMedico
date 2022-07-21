@@ -48,7 +48,6 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #endregion
 
-
         #region Commands
         public ICommand GuardarCitaCommand
         {
@@ -57,6 +56,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         }
         #endregion
 
+        #region Methods
         private void GuardarCita()
         {
             if(DescripcionTxt != "")
@@ -64,27 +64,29 @@ namespace ControlMedico.ViewModel.ViewModelMedico
                 Cita nuevaCita = new Cita();
                 nuevaCita.Descripcion = DescripcionTxt;
                 nuevaCita.Fecha = FechaSeleccionada;
-                nuevaCita.Hora = HoraSeleccionada.ToString();
+                nuevaCita.Hora = HoraSeleccionada.ToString(@"hh\:mm");
                 nuevaCita.IdMedico = Settings.IdMedico;
                 nuevaCita.IdPaciente = paciente.IdUsuario;
                 int respuesta = CitaRepository.GuardarCita(nuevaCita);
                 if(respuesta != 0)
                 {
-                    Application.Current.MainPage.DisplayAlert("Aviso", "La Cita se guardó co exito", "Aceptar");
+                    Application.Current.MainPage.DisplayAlert("Nueva Cita", "La cita se guardó con exito", "Aceptar");
                     Application.Current.MainPage.Navigation.PopAsync();
                 }
-
+                else
+                {
+                    Application.Current.MainPage.DisplayAlert("Nueva Cita", "No se guardó la cita, intentelo mas tarde", "Aceptar");
+                }
             }
-
-            
-
-            
         }
 
+        #endregion
 
+        #region Constructor
         public NuevaCitaViewModel(Usuario pacienteSeleccionado)
         {
             this.paciente = pacienteSeleccionado;
         }
+        #endregion
     }
 }

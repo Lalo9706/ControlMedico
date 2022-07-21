@@ -108,14 +108,6 @@
                                 FontAttributes="Bold"
                                 Command="{Binding LoginCommand}" />
                     </Frame>
-                    <Button Text="Crear Cuenta"
-                            HeightRequest="35"
-                            WidthRequest="300"
-                            TextColor="#2CA669"
-                            BackgroundColor="White"
-                            FontSize="11"
-                            FontAttributes="Bold"
-                            Command="{Binding NewAccountCommand}" />
                 </StackLayout>
             </Grid>
         </StackLayout>

@@ -19,7 +19,6 @@ namespace ControlMedico.ViewModel
         public bool isRefreshing = false;
         #endregion
 
-
         #region Properties
         public object ListViewSource
         {
@@ -46,7 +45,6 @@ namespace ControlMedico.ViewModel
 
 
         #endregion
-
 
         #region Methods
 

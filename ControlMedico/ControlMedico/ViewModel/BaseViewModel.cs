@@ -25,8 +25,7 @@ namespace ControlMedico.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        protected virtual void OnPropertyChangeds([CallerMemberName] string propertyName =
-        null)
+        protected virtual void OnPropertyChangeds([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)

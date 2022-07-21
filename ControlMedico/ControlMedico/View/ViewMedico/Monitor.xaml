@@ -4,21 +4,47 @@
              x:Class="ControlMedico.View.ViewMedico.Monitor"
              BackgroundColor="White"
              >
-    <Grid RowDefinitions="50,*">
-        <StackLayout Margin="5" Grid.Row="0">
+    <StackLayout>
+        
+        <Grid Margin="20,20,20,0" RowDefinitions="30">
+            <Label Text="Paciente:" FontSize="20" TextColor="Black" Grid.Row="0"/>
             <Picker BackgroundColor="White"
                     TitleColor="Black"
-                    HorizontalTextAlignment="Center"
                     Title="Selecciona un Paciente"
-                    ItemsSource="{Binding PickerSource}"
-                   />
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    SelectedItem="{Binding PacienteSeleccionado}"
+                    FontSize="18"
+                    Grid.Row="1"
+                   >
+                <Picker.Items>
+                    <x:String>Sebastian López Gómez</x:String>
+                    <x:String>Luis Alfonso Torres Castillo</x:String>
+                    <x:String>Javier Padron Rodriguez</x:String>
+                </Picker.Items>
+            </Picker>
+        </Grid>
+
+        <Grid Margin="20" RowDefinitions="*,*,*" ColumnDefinitions="50,90,50,50" HorizontalOptions="CenterAndExpand" ColumnSpacing="25" RowSpacing="25">
+                       
+            <Image Source="https://cdn-icons-png.flaticon.com/512/45/45863.png" Grid.Row="0" VerticalOptions="Center" />
+            <Label Text="Pulso:" FontAttributes="Bold" FontSize="18" TextColor="Black" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="{Binding PPM}" FontSize="20" FontAttributes="Bold" TextColor="Blue" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="PPM" FontSize="20" FontAttributes="Bold" TextColor="Black" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <Image Source="https://www.clipartmax.com/png/full/327-3271562_oxygen-tank-icon-oxygen-icon-png.png" Grid.Row="1" VerticalOptions="Center" />
+            <Label Text="Oxigenación en la sangre:" FontAttributes="Bold" FontSize="15" TextColor="Black" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="{Binding Oxigen}" FontSize="20" FontAttributes="Bold" TextColor="Blue" Grid.Row="1" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="SpO2" FontSize="20" FontAttributes="Bold" TextColor="Black" Grid.Row="1" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <Image Source="https://cdn-icons-png.flaticon.com/512/483/483530.png" Grid.Row="2" VerticalOptions="Center" />
+            <Label Text="Temperatura:" FontAttributes="Bold" FontSize="15" TextColor="Black" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="{Binding Temp}" FontSize="20" FontAttributes="Bold" TextColor="Blue" Grid.Row="2" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="°C" FontSize="20" FontAttributes="Bold" TextColor="Black" Grid.Row="2" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
             
-        </StackLayout>
-        <StackLayout Grid.Row="1">
-            <Label Margin="11" Text="Nombre Paciente:" TextColor="Black"/>
-        </StackLayout>
-        
-    </Grid>
+        </Grid>
+
+    </StackLayout>
     
 
 
