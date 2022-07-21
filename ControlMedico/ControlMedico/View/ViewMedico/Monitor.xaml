@@ -14,6 +14,7 @@
                     TextColor="Black"
                     FontAttributes="Bold"
                     SelectedItem="{Binding PacienteSeleccionado}"
+                    SelectedIndex="{Binding PacienteIndex}"
                     FontSize="18"
                     Grid.Row="1"
                    >
@@ -44,7 +45,9 @@
             
         </Grid>
 
+        <Button Text="Probar" TextColor="Black" BackgroundColor="White" Command="{Binding ProbarCommand}" />
     </StackLayout>
+    
     
 
 

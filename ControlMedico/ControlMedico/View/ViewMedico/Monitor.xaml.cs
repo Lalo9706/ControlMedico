@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControlMedico.ViewModel.ViewModelMedico;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace ControlMedico.View.ViewMedico
         public Monitor()
         {
             InitializeComponent();
+            BindingContext = new MonitorViewModel();
         }
     }
 }

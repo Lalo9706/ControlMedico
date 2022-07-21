@@ -73,7 +73,6 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #endregion
 
-
         #region Methods
 
         public void RecuperarCitasPorFecha()
