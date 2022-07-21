@@ -11,7 +11,6 @@ namespace ControlMedico
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new IniciarSesion());
         }
 

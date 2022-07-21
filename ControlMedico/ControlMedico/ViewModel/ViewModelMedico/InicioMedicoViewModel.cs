@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using Acr.UserDialogs;
+using CommunityToolkit.Mvvm.Input;
 using ControlMedico.Data;
 using ControlMedico.Data.Repository;
 using ControlMedico.Model;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -75,10 +77,13 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #region Methods
 
-        public void RecuperarCitasPorFecha()
+        public async void RecuperarCitasPorFecha()
         {
+            UserDialogs.Instance.ShowLoading("Cargando Citas");
+            await Task.Delay(300);
             this.IsRefreshing = true;
             this.ListViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, fechaSeleccionada);
+            UserDialogs.Instance.HideLoading();
             if (FechaSeleccionada == DateTime.Today)
             {
                 this.LblDiaSeleccionado = "Citas para Hoy";

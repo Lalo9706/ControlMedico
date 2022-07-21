@@ -10,6 +10,7 @@ using ControlMedico.View;
 using System.Threading.Tasks;
 using ControlMedico.View.ViewMedico;
 using ControlMedico.Data;
+using Acr.UserDialogs;
 
 namespace ControlMedico.ViewModel
 {
@@ -38,7 +39,7 @@ namespace ControlMedico.ViewModel
 
         #region Commands
         public ICommand LoginCommand
-        {
+        {           
             get { return new RelayCommand(IniciarSesion); }
             set { }
         }
@@ -52,8 +53,9 @@ namespace ControlMedico.ViewModel
         #endregion
         
         #region Methods
-        private void IniciarSesion()
+        private async void IniciarSesion()
         {
+            
             String correo;
             String contraseña;
             if (EmailTxt.Equals(null)) { correo = ""; } else { correo = EmailTxt.ToString(); }
@@ -61,12 +63,16 @@ namespace ControlMedico.ViewModel
 
             if (correo != "" && contraseña != "")
             {
+                UserDialogs.Instance.ShowLoading("Iniciando Sesión");
+                await Task.Delay(500);
                 usuario = UsuarioRepository.IniciarSesion(correo, contraseña);
+                
                 if (usuario != null)
                 {
                     if (usuario.IdUsuario != 0)
                     {
-                        Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Bienvenido " + usuario.Nombre, "Aceptar");
+                        
+                        
                         if (usuario.TipoUsuario == MEDICO)
                         {
                             Settings.IdMedico = usuario.IdUsuario;
@@ -78,9 +84,11 @@ namespace ControlMedico.ViewModel
                             Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Abriendo Vista del Paciente", "Aceptar");
                             /*Application.Current.MainPage.Navigation.PushAsync(new PrincipalPaciente(usuario)); */
                         }
-
+                        //await Task.Delay(2000);
+                        UserDialogs.Instance.HideLoading();
+                        Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Bienvenido " + usuario.Nombre, "Aceptar");
                     }
-                    else { Application.Current.MainPage.DisplayAlert("Datos incorrectos", "Verifique su información", "Aceptar"); }
+                    else { UserDialogs.Instance.HideLoading(); Application.Current.MainPage.DisplayAlert("Datos incorrectos", "Verifique su información", "Aceptar"); }
                 }
                 else if (usuario == null) { Application.Current.MainPage.DisplayAlert("Error de conexión con el servidor", "No se pudo verificar su cuenta", "Aceptar"); }
             }

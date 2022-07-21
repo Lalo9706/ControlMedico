@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using Acr.UserDialogs;
+using CommunityToolkit.Mvvm.Input;
 using ControlMedico.Data;
 using ControlMedico.Data.Model;
 using ControlMedico.Data.Repository;
@@ -6,6 +7,7 @@ using ControlMedico.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -57,10 +59,12 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         #endregion
 
         #region Methods
-        private void GuardarCita()
+        private async void GuardarCita()
         {
             if(DescripcionTxt != "")
             {
+                UserDialogs.Instance.ShowLoading("Guardando Cita");
+                await Task.Delay(3000);
                 Cita nuevaCita = new Cita();
                 nuevaCita.Descripcion = DescripcionTxt;
                 nuevaCita.Fecha = FechaSeleccionada;
@@ -68,13 +72,16 @@ namespace ControlMedico.ViewModel.ViewModelMedico
                 nuevaCita.IdMedico = Settings.IdMedico;
                 nuevaCita.IdPaciente = paciente.IdUsuario;
                 int respuesta = CitaRepository.GuardarCita(nuevaCita);
-                if(respuesta != 0)
+                
+                if (respuesta != 0)
                 {
-                    Application.Current.MainPage.DisplayAlert("Nueva Cita", "La cita se guardó con exito", "Aceptar");
                     Application.Current.MainPage.Navigation.PopAsync();
+                    UserDialogs.Instance.HideLoading();
+                    Application.Current.MainPage.DisplayAlert("Nueva Cita", "La cita se guardó con exito", "Aceptar");                    
                 }
                 else
                 {
+                    UserDialogs.Instance.HideLoading();
                     Application.Current.MainPage.DisplayAlert("Nueva Cita", "No se guardó la cita, intentelo mas tarde", "Aceptar");
                 }
             }

@@ -42,10 +42,14 @@
             <Label Text="Temperatura:" FontAttributes="Bold" FontSize="15" TextColor="Black" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
             <Label Text="{Binding Temp}" FontSize="20" FontAttributes="Bold" TextColor="Blue" Grid.Row="2" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Label Text="°C" FontSize="20" FontAttributes="Bold" TextColor="Black" Grid.Row="2" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
-            
+              
         </Grid>
-
-        <Button Text="Probar" TextColor="Black" BackgroundColor="White" Command="{Binding ProbarCommand}" />
+        <Grid Margin="20">
+            <!-- Avisos en la parte inferior -->
+            <Label Text="* Aviso: Los datos se actualizan cada 2 segundos" TextColor="Red" Grid.Row="0"/>
+        </Grid>
+        
+        <!--<Button Text="Probar" TextColor="Black" BackgroundColor="White" Command="{Binding ProbarCommand}" />-->
     </StackLayout>
     
     

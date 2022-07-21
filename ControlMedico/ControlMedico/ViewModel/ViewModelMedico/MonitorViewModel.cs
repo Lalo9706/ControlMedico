@@ -85,7 +85,6 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         private void SimularValores()
         {
-            int i = 0;
             Device.StartTimer(timer, () =>
             {
                 //Hace algo cada 2 segundos
@@ -115,10 +114,9 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             if(paciente == 2)
             {
                 this.PPM = random.Next(76, 80);
-                this.Oxigen = random.Next(94, 95);
+                this.Oxigen = random.Next(89, 91);
                 this.Temp = random.Next(37, 39);
-            }
-            
+            }           
         }
 
         #endregion
