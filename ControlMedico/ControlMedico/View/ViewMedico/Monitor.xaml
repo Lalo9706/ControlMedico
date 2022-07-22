@@ -21,7 +21,8 @@
                 <Picker.Items>
                     <x:String>Sebastian López Gómez</x:String>
                     <x:String>Luis Alfonso Torres Castillo</x:String>
-                    <x:String>Javier Padron Rodriguez</x:String>
+                    <x:String>Javier Padrón Rodríguez</x:String>
+                    <x:String>Alicia Carmona Álvarez </x:String>
                 </Picker.Items>
             </Picker>
         </Grid>
@@ -44,9 +45,15 @@
             <Label Text="°C" FontSize="20" FontAttributes="Bold" TextColor="Black" Grid.Row="2" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center"/>
               
         </Grid>
+        <Grid Margin="20" ColumnDefinitions="250,50" HorizontalOptions="Center" ColumnSpacing="-20">
+            <Label Text="Activar Alertas" TextColor="Black" FontAttributes="Bold" FontSize="18" />
+            <Switch IsToggled="{Binding Notificar}" Grid.Row="0" Grid.Column="1"/> 
+        </Grid>
         <Grid Margin="20">
             <!-- Avisos en la parte inferior -->
-            <Label Text="* Aviso: Los datos se actualizan cada 2 segundos" TextColor="Red" Grid.Row="0"/>
+            <Label Text="* Aviso: Solo se mostrarán notificaciones del pacientes seleccionado." TextColor="Red" Grid.Row="0"/>
+            <Label Text="* Mantenga la aplicación abierta o en segundo plano si desea que el monitor le notifique los valores alterados del paciente" TextColor="Red" Grid.Row="1"/>
+            <Label Text="* Los datos se actualizan cada 2 segundos" TextColor="Red" Grid.Row="2"/>
         </Grid>
         
         <!--<Button Text="Probar" TextColor="Black" BackgroundColor="White" Command="{Binding ProbarCommand}" />-->
