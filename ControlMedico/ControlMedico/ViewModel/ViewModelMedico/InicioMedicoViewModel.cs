@@ -26,7 +26,6 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         public string lblDiaSeleccionado = "Citas para Hoy";
         #endregion
 
-
         #region Properties
         public object ListViewSource
         {
@@ -92,10 +91,10 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             {
                 this.LblDiaSeleccionado = "Citas para el dia " + FechaSeleccionada.ToString("dd/MM/yyyy");
             }
-
             this.IsRefreshing = false;
         }
 
         #endregion
+
     }
 }
