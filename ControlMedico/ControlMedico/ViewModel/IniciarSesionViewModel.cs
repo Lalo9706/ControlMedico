@@ -72,8 +72,6 @@ namespace ControlMedico.ViewModel
                 {
                     if (usuario.IdUsuario != 0)
                     {
-                        
-                        
                         if (usuario.TipoUsuario == MEDICO)
                         {
                             Settings.IdMedico = usuario.IdUsuario;

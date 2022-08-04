@@ -1,8 +1,10 @@
 ﻿using Acr.UserDialogs;
 using CommunityToolkit.Mvvm.Input;
 using ControlMedico.Data;
+using ControlMedico.Data.Model;
 using ControlMedico.Data.Repository;
 using ControlMedico.Model;
+using ControlMedico.View.ViewMedico;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -87,9 +89,30 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             set { }
         }
 
+        public ICommand ItemTappedCommand { get; } = new Command(async (item) =>
+        {
+            if (item != null)
+            {
+                Cita citaSeleccionada = item as Cita;
+                await Application.Current.MainPage.Navigation.PushAsync(new DetallesCita());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Item Seleccionado", "No se seleccionó nada","Aceptar");
+            }
+        }
+        );
+
+        
+
         #endregion
 
         #region Methods
+
+        public void ItemSeleccionado()
+        {
+
+        }
 
         public async void RecuperarCitasPorFecha()
         {
