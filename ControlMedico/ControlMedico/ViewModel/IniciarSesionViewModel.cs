@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using ControlMedico.View.ViewMedico;
 using ControlMedico.Data;
 using Acr.UserDialogs;
+using ControlMedico.View.ViewPaciente;
 
 namespace ControlMedico.ViewModel
 {
@@ -81,8 +82,7 @@ namespace ControlMedico.ViewModel
                         if (usuario.TipoUsuario == PACIENTE)
                         {
                             Settings.IdPaciente = usuario.IdUsuario;
-                            Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Abriendo Vista del Paciente", "Aceptar");
-                            /*Application.Current.MainPage.Navigation.PushAsync(new PrincipalPaciente(usuario)); */
+                            Application.Current.MainPage.Navigation.PushAsync(new NavegacionPaciente());
                         }
                         //await Task.Delay(2000);
                         UserDialogs.Instance.HideLoading();

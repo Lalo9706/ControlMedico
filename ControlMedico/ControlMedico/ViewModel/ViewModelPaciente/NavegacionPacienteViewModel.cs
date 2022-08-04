@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ControlMedico.ViewModel
 {
-    internal class PrincipalPacienteViewModel : BaseViewModel
+    internal class NavegacionPacienteViewModel : BaseViewModel
     {
     }
 }

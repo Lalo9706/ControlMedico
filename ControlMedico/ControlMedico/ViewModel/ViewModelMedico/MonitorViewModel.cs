@@ -25,7 +25,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         #region Attributes
 
         //Ajustes
-        public Boolean notificar = true; // Switch 
+        public Boolean notificar = true; // Switch para desactivar notificaciones del monitor
         public Boolean notificando = false; // Estado de la notificación
         TimeSpan timer = TimeSpan.FromSeconds(2);
         Random random = new Random();

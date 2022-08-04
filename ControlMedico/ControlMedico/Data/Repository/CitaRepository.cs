@@ -10,8 +10,12 @@ namespace ControlMedico.Data.Repository
     internal class CitaRepository
     {
         #region QUERYS
+        /*private static string QUERY_RECUPERAR_CITAS_MEDICO =
+            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente FROM cita WHERE idMedico = @idMedico AND fecha = @hoy ORDER BY hora";*/
+
         private static string QUERY_RECUPERAR_CITAS_MEDICO =
-            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente FROM cita WHERE idMedico = @idMedico AND fecha = @hoy ORDER BY hora";
+            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente, nombre, apellidoPaterno, apellidoMaterno FROM cita INNER JOIN usuario ON cita.idPaciente = usuario.idUsuario WHERE idMedico = @idMedico AND fecha = @hoy ORDER BY hora";
+
         /*private static string QUERY_RECUPERAR_CITAS_PACIENTE =
             "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente FROM cita WHERE idPaciente = @idPaciente";*/
 
@@ -19,7 +23,6 @@ namespace ControlMedico.Data.Repository
             "INSERT INTO cita (fecha, hora, descripcionCita, idMedico, idPaciente) VALUES (@fecha, @hora, @descripcionCita, @idMedico, @idPaciente)";
 
         #endregion
-
 
         #region Methods
         public static List<Cita> RecuperarCitasMedico(int idMedico, DateTime hoy)
@@ -46,7 +49,7 @@ namespace ControlMedico.Data.Repository
                             citaTemp.Descripcion = respuestaBD.GetString(3);
                             citaTemp.IdMedico = respuestaBD.GetInt16(4);
                             citaTemp.IdPaciente = respuestaBD.GetInt16(5);
-
+                            citaTemp.NombreCompletoPaciente = respuestaBD.GetString(6) + " " + respuestaBD.GetString(7) + " " + respuestaBD.GetString(8);
                             citas.Add(citaTemp);
                         }
                     }

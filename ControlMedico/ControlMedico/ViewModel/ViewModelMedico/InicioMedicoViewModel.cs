@@ -18,6 +18,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         #region Attributes
         public object listViewSource = CitaRepository.RecuperarCitasMedico(Settings.IdMedico, DateTime.Today);
         public string hora;
+        public string nombreCompletoPaciente;
         public string descripcion;
         public int idMedico = Settings.IdMedico;
         public bool isRefreshing = false;
@@ -35,8 +36,14 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         public string Hora
         {
-            get { return this.hora;}
+            get { return hora;}
             set { SetValue(ref this.hora, value); }
+        }
+
+        public string NombreCompletoPaciente
+        {
+            get { return this.nombreCompletoPaciente;}
+            set { SetValue(ref this.nombreCompletoPaciente, value); }
         }
 
         public string Descripcion
@@ -66,7 +73,15 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #region Commands
 
+        //Se lanza cuando se selecciona una fecha del calendario
         public ICommand FechaSeleccionadaCommand
+        {
+            get { return new RelayCommand(RecuperarCitasPorFecha); }
+            set { }
+        }
+
+        //Se lanza cuando se da scroll hacia abajo en la lista para actualizarla.
+        public ICommand ListRefreshingCommand
         {
             get { return new RelayCommand(RecuperarCitasPorFecha); }
             set { }
@@ -93,6 +108,10 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             }
             this.IsRefreshing = false;
         }
+
+        #endregion
+
+        #region Contructor
 
         #endregion
 

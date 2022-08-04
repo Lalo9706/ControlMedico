@@ -12,5 +12,6 @@ namespace ControlMedico.Data.Model
         public string Descripcion { get; set; }
         public int IdMedico { get; set; }
         public int IdPaciente { get; set; }
+        public string NombreCompletoPaciente { get; set; }
     }
 }
