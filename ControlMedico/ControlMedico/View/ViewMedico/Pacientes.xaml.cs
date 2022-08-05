@@ -36,7 +36,7 @@ namespace ControlMedico.View.ViewMedico
 
         private void ProgramarCita_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NuevaCita(pacienteSeleccionado));
+            Navigation.PushAsync(new FormularioCita(pacienteSeleccionado));
         }
     }
 }

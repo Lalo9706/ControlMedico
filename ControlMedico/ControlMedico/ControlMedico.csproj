@@ -42,6 +42,9 @@
 	    <Compile Update="View\ViewMedico\InicioMedico.xaml.cs">
 	      <DependentUpon>InicioMedico.xaml</DependentUpon>
 	    </Compile>
+	    <Compile Update="View\ViewMedico\FormularioCita.xaml.cs">
+	      <DependentUpon>FormularioCita.xaml</DependentUpon>
+	    </Compile>
 	    <Compile Update="View\ViewPaciente\NavegacionPaciente.xaml.cs">
 	      <DependentUpon>NavegacionPaciente.xaml</DependentUpon>
 	    </Compile>
@@ -63,10 +66,13 @@
     <EmbeddedResource Update="View\ViewMedico\NavegacionMedico.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\ViewMedico\NuevaCita.xaml">
+    <EmbeddedResource Update="View\ViewMedico\FormularioCita.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ViewMedico\Pacientes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\ViewPaciente\DetallesCitaPaciente.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ViewPaciente\InicioPaciente.xaml">

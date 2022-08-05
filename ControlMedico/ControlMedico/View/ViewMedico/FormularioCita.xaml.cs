@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace ControlMedico.View.ViewMedico
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NuevaCita : ContentPage
+    public partial class FormularioCita : ContentPage
     {
-        public NuevaCita(Model.Usuario pacienteSeleccionado)
+        public FormularioCita(Model.Usuario pacienteSeleccionado)
         {
             InitializeComponent();
-            BindingContext = new NuevaCitaViewModel(pacienteSeleccionado);
+            BindingContext = new FormularioCitaViewModel(pacienteSeleccionado);
         }
     }
 }

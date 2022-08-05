@@ -3,12 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using ControlMedico.Data;
 using ControlMedico.Data.Model;
 using ControlMedico.Data.Repository;
-using ControlMedico.Model;
 using ControlMedico.View.ViewMedico;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -103,16 +100,9 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         }
         );
 
-        
-
         #endregion
 
         #region Methods
-
-        public void ItemSeleccionado()
-        {
-
-        }
 
         public async void RecuperarCitasPorFecha()
         {
@@ -134,9 +124,6 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #endregion
 
-        #region Contructor
-
-        #endregion
 
     }
 }

@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace ControlMedico.ViewModel.ViewModelMedico
 {
-    internal class NuevaCitaViewModel : BaseViewModel
+    internal class FormularioCitaViewModel : BaseViewModel
     {
 
         #region Attributes
@@ -75,14 +75,14 @@ namespace ControlMedico.ViewModel.ViewModelMedico
                 
                 if (respuesta != 0)
                 {
-                    Application.Current.MainPage.Navigation.PopAsync();
+                    await Application.Current.MainPage.Navigation.PopAsync();
                     UserDialogs.Instance.HideLoading();
-                    Application.Current.MainPage.DisplayAlert("Nueva Cita", "La cita se guardó con exito", "Aceptar");                    
+                    await Application.Current.MainPage.DisplayAlert("Nueva Cita", "La cita se guardó con exito", "Aceptar");                    
                 }
                 else
                 {
                     UserDialogs.Instance.HideLoading();
-                    Application.Current.MainPage.DisplayAlert("Nueva Cita", "No se guardó la cita, intentelo mas tarde", "Aceptar");
+                    await Application.Current.MainPage.DisplayAlert("Nueva Cita", "No se guardó la cita, intentelo mas tarde", "Aceptar");
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         #endregion
 
         #region Constructor
-        public NuevaCitaViewModel(Usuario pacienteSeleccionado)
+        public FormularioCitaViewModel(Usuario pacienteSeleccionado)
         {
             this.paciente = pacienteSeleccionado;
         }

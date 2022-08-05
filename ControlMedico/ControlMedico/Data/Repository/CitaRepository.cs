@@ -12,10 +12,10 @@ namespace ControlMedico.Data.Repository
         #region QUERYS
 
         private static string QUERY_RECUPERAR_CITAS_MEDICO =
-            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente, nombre, apellidoPaterno, apellidoMaterno FROM cita INNER JOIN usuario ON cita.idPaciente = usuario.idUsuario WHERE idMedico = @idMedico AND fecha = @hoy ORDER BY hora";
+            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente, nombre, apellidoPaterno, apellidoMaterno FROM cita INNER JOIN usuario ON cita.idPaciente = usuario.idUsuario WHERE idMedico = @idMedico AND fecha = @dia ORDER BY hora";
 
-        /*private static string QUERY_RECUPERAR_CITAS_PACIENTE =
-            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente FROM cita WHERE idPaciente = @idPaciente";*/
+        private static string QUERY_RECUPERAR_CITAS_PACIENTE =
+            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente, nombre, apellidoPaterno, apellidoMaterno FROM cita INNER JOIN usuario ON cita.idPaciente = usuario.idUsuario WHERE idPaciente = @idPaciente AND fecha = @dia ORDER BY hora";
 
         private static string QUERY_INSERTAR_NUEVA_CITA = 
             "INSERT INTO cita (fecha, hora, descripcionCita, idMedico, idPaciente) VALUES (@fecha, @hora, @descripcionCita, @idMedico, @idPaciente)";
@@ -23,7 +23,7 @@ namespace ControlMedico.Data.Repository
         #endregion
 
         #region Methods
-        public static List<Cita> RecuperarCitasMedico(int idMedico, DateTime hoy)
+        public static List<Cita> RecuperarCitasMedico(int idMedico, DateTime dia)
         {
             List<Cita> citas = null;
             MySqlConnection conexionBD = ConexionMySQL.ObtenerConexion();
@@ -33,7 +33,7 @@ namespace ControlMedico.Data.Repository
                 {
                     MySqlCommand mySqlCommand = new MySqlCommand(QUERY_RECUPERAR_CITAS_MEDICO, conexionBD);
                     mySqlCommand.Parameters.AddWithValue("@idMedico", idMedico);
-                    mySqlCommand.Parameters.AddWithValue("@hoy", hoy.ToString("yyyy/MM/dd"));
+                    mySqlCommand.Parameters.AddWithValue("@dia", dia.ToString("yyyy/MM/dd"));
                     MySqlDataReader respuestaBD = mySqlCommand.ExecuteReader();
                     citas = new List<Cita>();
                     if (respuestaBD.HasRows)
@@ -94,9 +94,45 @@ namespace ControlMedico.Data.Repository
             return respuesta;
         }
 
-        internal static Task<List<Cita>> RecuperarCitasPaciente(int idPaciente)
+        public static List<Cita> RecuperarCitasPaciente(int idPaciente, DateTime dia)
         {
-            throw new NotImplementedException();
+            List<Cita> citas = null;
+            MySqlConnection conexionBD = ConexionMySQL.ObtenerConexion();
+            if (conexionBD != null)
+            {
+                try
+                {
+                    MySqlCommand mySqlCommand = new MySqlCommand(QUERY_RECUPERAR_CITAS_PACIENTE, conexionBD);
+                    mySqlCommand.Parameters.AddWithValue("@idPaciente", idPaciente);
+                    mySqlCommand.Parameters.AddWithValue("@dia", dia.ToString("yyyy/MM/dd"));
+                    MySqlDataReader respuestaBD = mySqlCommand.ExecuteReader();
+                    citas = new List<Cita>();
+                    if (respuestaBD.HasRows)
+                    {
+                        while (respuestaBD.Read())
+                        {
+                            Cita citaTemp = new Cita();
+                            citaTemp.IdCita = respuestaBD.GetInt16(0);
+                            citaTemp.Fecha = respuestaBD.GetDateTime(1);
+                            citaTemp.Hora = respuestaBD.GetString(2);
+                            citaTemp.Descripcion = respuestaBD.GetString(3);
+                            citaTemp.IdMedico = respuestaBD.GetInt16(4);
+                            citaTemp.IdPaciente = respuestaBD.GetInt16(5);
+                            citaTemp.NombreCompletoPaciente = respuestaBD.GetString(6) + " " + respuestaBD.GetString(7) + " " + respuestaBD.GetString(8);
+                            citas.Add(citaTemp);
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    conexionBD.Close();
+                }
+            }
+            return citas;
         }
 
         #endregion
