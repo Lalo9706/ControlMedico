@@ -15,7 +15,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
     {
         #region Attributes
         private Cita citaSeleccionada;
-        private RegistroMedico registroMedicoCita;
+        private RegistroMedico registroMedicoCita = null;
         private int edad;
         private string peso;
         private string altura;
@@ -32,7 +32,8 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         {
             this.citaSeleccionada = citaSeleccionada;
             RegistroMedico registroTemp = RegistroMedicoRepository.RecuperarRegistroMedico(citaSeleccionada.IdCita);
-            if (registroTemp != null)
+
+            if (registroTemp.IdRegistroMedico > 0)
             {
                 this.registroMedicoCita = registroTemp;
                 this.Edad = registroTemp.Edad;
@@ -43,7 +44,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
                 this.Diagnostico = registroTemp.Diagnostico;
                 this.Tratamiento = registroTemp.Tratamiento;
             }
-            else if (registroTemp == null)
+            else if (registroTemp.IdRegistroMedico == 0)
             {
                 this.Edad = 0;
                 this.Peso = "";
@@ -124,43 +125,77 @@ namespace ControlMedico.ViewModel.ViewModelMedico
         public async void GuardarRegistroMedico()
         {
             Boolean validacion = false;
-            if (!this.Edad.Equals(0)) { validacion = true; } else { validacion = false; }
-            if (!this.Peso.Equals("")) { validacion = true; } else { validacion = false; }
-            if (!this.Altura.Equals("")) { validacion = true; } else { validacion = false; }
-            if (!this.PresionSanguinea.Equals("")) { validacion = true; } else { validacion = false; }
-            if (!this.NivelGlucosa.Equals("")) { validacion = true; } else { validacion = false; }
-            if (!this.Diagnostico.Equals("")) { validacion = true; } else { validacion = false; }
-            if (!this.Tratamiento.Equals("")) { validacion = true; } else { validacion = false; }
+            if (this.Edad == 0) { validacion = false; } else { validacion = true; }
+            if (this.Peso == null || this.Peso == "") { validacion = false; } else { validacion = true; }
+            if (this.Altura == null || this.Altura == "") { validacion = false; } else { validacion = true; }
+            if (this.PresionSanguinea == null || this.PresionSanguinea == "") { validacion = false; } else { validacion = true; }
+            if (this.NivelGlucosa == null || this.NivelGlucosa == "") { validacion = false; } else { validacion = true; }
+            if (this.Diagnostico == null || this.Diagnostico == "") { validacion = false; } else { validacion = true; }
+            if (this.Tratamiento == null || this.Tratamiento == "") { validacion = false; } else { validacion = true; }
 
 
             if (validacion != false)
             {
-                RegistroMedico registroTemp = new RegistroMedico();
-                registroTemp.Edad = this.Edad;
-                registroTemp.Peso = this.Peso;
-                registroTemp.Altura = this.Altura;
-                registroTemp.PresionSanguinea = this.PresionSanguinea;
-                registroTemp.NivelGlucosa = this.NivelGlucosa;
-                registroTemp.Diagnostico = this.Diagnostico;
-                registroTemp.Tratamiento = this.Tratamiento;
-                registroTemp.IdCita = this.citaSeleccionada.IdCita;
-
-                UserDialogs.Instance.ShowLoading("Guardando Registro Medico");
-                await Task.Delay(500);
-                int respuestaBD = RegistroMedicoRepository.GuardarRegistroMedico(registroTemp);
-
-                if (respuestaBD > 0)
+                
+                if (registroMedicoCita == null)
                 {
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                    UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("Registro Medico", "Se guardarón los datos con exito", "Aceptar");
+                    RegistroMedico registroTemp = new RegistroMedico();
+                    registroTemp.Edad = this.Edad;
+                    registroTemp.Peso = this.Peso;
+                    registroTemp.Altura = this.Altura;
+                    registroTemp.PresionSanguinea = this.PresionSanguinea;
+                    registroTemp.NivelGlucosa = this.NivelGlucosa;
+                    registroTemp.Diagnostico = this.Diagnostico;
+                    registroTemp.Tratamiento = this.Tratamiento;
+                    registroTemp.IdCita = this.citaSeleccionada.IdCita;
+
+                    UserDialogs.Instance.ShowLoading("Guardando Registro Medico");
+                    await Task.Delay(500);
+                    int respuestaBD = RegistroMedicoRepository.GuardarRegistroMedico(registroTemp);
+
+                    if (respuestaBD > 0)
+                    {
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                        UserDialogs.Instance.HideLoading();
+                        await Application.Current.MainPage.DisplayAlert("Registro Medico", "Se guardarón los datos con exito", "Aceptar");
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Registro Medico", "No se guardarón los datos, vuelva a intentarlo mas tarde", "Aceptar");
+                        UserDialogs.Instance.HideLoading();
+                    }
                 }
-                else
+                else if(registroMedicoCita != null)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Registro Medico", "No se guardarón los datos, vuelva a intentarlo mas tarde", "Aceptar");
-                    UserDialogs.Instance.HideLoading();
-                }
+                    RegistroMedico registroTemp = new RegistroMedico();
+                    registroTemp.IdRegistroMedico = registroMedicoCita.IdRegistroMedico;
+                    registroTemp.Edad = this.Edad;
+                    registroTemp.Peso = this.Peso;
+                    registroTemp.Altura = this.Altura;
+                    registroTemp.PresionSanguinea = this.PresionSanguinea;
+                    registroTemp.NivelGlucosa = this.NivelGlucosa;
+                    registroTemp.Diagnostico = this.Diagnostico;
+                    registroTemp.Tratamiento = this.Tratamiento;
+                    registroTemp.IdCita = this.citaSeleccionada.IdCita;
+
+                    UserDialogs.Instance.ShowLoading("Actualizando Registro Medico");
+                    await Task.Delay(500);
+                    int respuestaBD = RegistroMedicoRepository.ActualizarRegistroMedico(registroTemp);
+
+                    if (respuestaBD > 0)
+                    {
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                        UserDialogs.Instance.HideLoading();
+                        await Application.Current.MainPage.DisplayAlert("Registro Medico", "Se actualizarón los datos con exito", "Aceptar");
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Registro Medico", "No se actualizarón los datos, vuelva a intentarlo mas tarde", "Aceptar");
+                        UserDialogs.Instance.HideLoading();
+                    }
+                }                
             }
             else
             {

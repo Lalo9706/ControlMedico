@@ -14,8 +14,9 @@ namespace ControlMedico.Data.Repository
         private static string QUERY_INSERT_REGISTRO_MEDICO =
             "INSERT INTO registromedico(edad, peso, altura, presionSanguinea, nivelGlucosa, diagnostico, tratamiento, idCita)" +
             " VALUES (@edad, @peso, @altura, @presionSanguinea, @nivelGlucosa, @diagnostico, @tratamiento, @idCita)";
-        private static string QUERY_UPDATE_REGISTRO_MEDICO = "UPDATE registromedico SET 
-            " VALUES (@edad, @peso, @altura, @presionSanguinea, @nivelGlucosa, @diagnostico, @tratamiento, @idCita) WHERE idRegistroMedico = @idRegistroMedico";
+        private static string QUERY_UPDATE_REGISTRO_MEDICO = "UPDATE registromedico SET " +
+            " edad = @edad, peso = @peso, altura = @altura, presionSanguinea = @presionSanguinea, nivelGlucosa = @nivelGlucosa," +
+            " diagnostico = @diagnostico, tratamiento = @tratamiento WHERE idRegistroMedico = @idRegistroMedico";
 
         #endregion
 
@@ -99,7 +100,7 @@ namespace ControlMedico.Data.Repository
             {
                 try
                 {
-                    MySqlCommand mySqlCommand = new MySqlCommand(QUERY_INSERT_REGISTRO_MEDICO, conexionBD);
+                    MySqlCommand mySqlCommand = new MySqlCommand(QUERY_UPDATE_REGISTRO_MEDICO, conexionBD);
                     mySqlCommand.Parameters.AddWithValue("@edad", registroTemp.Edad);
                     mySqlCommand.Parameters.AddWithValue("@peso", registroTemp.Peso);
                     mySqlCommand.Parameters.AddWithValue("@altura", registroTemp.Altura);
@@ -107,7 +108,7 @@ namespace ControlMedico.Data.Repository
                     mySqlCommand.Parameters.AddWithValue("@nivelGlucosa", registroTemp.NivelGlucosa);
                     mySqlCommand.Parameters.AddWithValue("@diagnostico", registroTemp.Diagnostico);
                     mySqlCommand.Parameters.AddWithValue("@tratamiento", registroTemp.Tratamiento);
-                    mySqlCommand.Parameters.AddWithValue("@idCita", registroTemp.IdCita);
+                    mySqlCommand.Parameters.AddWithValue("@idRegistroMedico", registroTemp.IdRegistroMedico);
                     mySqlCommand.Prepare();
                     respuesta = mySqlCommand.ExecuteNonQuery();
 
