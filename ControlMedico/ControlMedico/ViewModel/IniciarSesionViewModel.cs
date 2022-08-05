@@ -82,7 +82,6 @@ namespace ControlMedico.ViewModel
                             Settings.IdPaciente = usuario.IdUsuario;
                             Application.Current.MainPage.Navigation.PushAsync(new NavegacionPaciente());
                         }
-                        //await Task.Delay(2000);
                         UserDialogs.Instance.HideLoading();
                         Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Bienvenido " + usuario.Nombre, "Aceptar");
                     }

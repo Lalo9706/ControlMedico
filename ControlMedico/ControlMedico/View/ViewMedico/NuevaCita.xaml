@@ -18,8 +18,6 @@
             <Editor Grid.Row="1" AutoSize="TextChanges" Text="{Binding DescripcionTxt, Mode=TwoWay}"/>
             <Button Text="Guardar Cita" Command="{Binding GuardarCitaCommand}" Grid.Row="6" VerticalOptions="End"/>
         </Grid>
-        
-
     </StackLayout>
     
 

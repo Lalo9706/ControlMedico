@@ -10,8 +10,6 @@ namespace ControlMedico.Data.Repository
     internal class CitaRepository
     {
         #region QUERYS
-        /*private static string QUERY_RECUPERAR_CITAS_MEDICO =
-            "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente FROM cita WHERE idMedico = @idMedico AND fecha = @hoy ORDER BY hora";*/
 
         private static string QUERY_RECUPERAR_CITAS_MEDICO =
             "SELECT idCita, fecha, hora, descripcionCita, idMedico, idPaciente, nombre, apellidoPaterno, apellidoMaterno FROM cita INNER JOIN usuario ON cita.idPaciente = usuario.idUsuario WHERE idMedico = @idMedico AND fecha = @hoy ORDER BY hora";

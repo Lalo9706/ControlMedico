@@ -94,7 +94,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             if (item != null)
             {
                 Cita citaSeleccionada = item as Cita;
-                await Application.Current.MainPage.Navigation.PushAsync(new DetallesCita());
+                await Application.Current.MainPage.Navigation.PushAsync(new DetallesCita(citaSeleccionada));
             }
             else
             {

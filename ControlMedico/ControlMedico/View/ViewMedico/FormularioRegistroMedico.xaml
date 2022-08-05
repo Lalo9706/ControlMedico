@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.ViewMedico.FormularioRegistroMedico">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Datos Medicos del Paciente" FontSize="20" FontAttributes="Bold" Margin="20,20,0,0"/>
+                <Grid Margin="20">
+                    <Label Text="Paciente: " Grid.Row="0"  FontSize="20" VerticalOptions="Center"/>
+                    <Label Text="{Binding NombreCompletoPaciente}" Grid.Row="1" FontSize="18" VerticalOptions="Center"/>
+                </Grid>
+                <Grid Margin="20,0" Padding="30,0" RowSpacing="5">
+                    <Label Text="Edad: " Grid.Row="0"  FontSize="18" VerticalOptions="Center"/>
+                    <Entry Text="{Binding Edad}" FontSize="18" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Peso: " Grid.Row="1"  FontSize="18" VerticalOptions="Center"/>
+                    <Entry Text="{Binding Peso}" FontSize="20" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Altura: " Grid.Row="2"  FontSize="18" VerticalOptions="Center"/>
+                    <Entry Text="{Binding Altura}" FontSize="18" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Presión Sanguinea: " Grid.Row="3"  FontSize="18" VerticalOptions="Center"/>
+                    <Entry Text="{Binding PresionSanguinea}" FontSize="18" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Nivel de Glucosa: " Grid.Row="4"  FontSize="18" VerticalOptions="Center"/>
+                    <Entry Text="{Binding NivelGlucosa}" FontSize="18" Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="Center"/>
+
+
+                </Grid>
+                <Grid Margin="20" RowDefinitions="25,Auto,25,Auto">
+                    <Label Text="Diagnostico: " Grid.Row="0"  FontSize="18" VerticalOptions="Center"/>
+                    <Editor Grid.Row="1" AutoSize="TextChanges" Text="{Binding Diagnostico, Mode=TwoWay}"/>
+
+                    <Label Text="Tratamiento: " Grid.Row="2"  FontSize="18" VerticalOptions="Center"/>
+                    <Editor Grid.Row="3" AutoSize="TextChanges" Text="{Binding Tratamiento, Mode=TwoWay}"/>
+
+                    <Button Text="Guardar Registro Medico" Command="{Binding GuardarRMCommand}" Grid.Row="4" HeightRequest="60"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+   
+    
+</ContentPage>

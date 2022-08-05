@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ControlMedico.Data.Model
 {
-    internal class Cita
+    public class Cita
     {
         public int IdCita { get; set; }
         public DateTime Fecha { get; set; }

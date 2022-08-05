@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace ControlMedico.View.ViewMedico
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetallesCita : ContentPage
+    public partial class FormularioRegistroMedico : ContentPage
     {
-        public DetallesCita(Cita citaSeleccionada)
+        public FormularioRegistroMedico(Cita citaSeleccionada)
         {
             InitializeComponent();
-            BindingContext = new DetallesCitaViewModel(citaSeleccionada);
+            BindingContext = new FormularioRegistroMedicoViewModel(citaSeleccionada);
         }
     }
 }
