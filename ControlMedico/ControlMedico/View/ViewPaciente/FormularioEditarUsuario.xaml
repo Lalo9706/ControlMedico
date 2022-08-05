@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.ViewPaciente.FormularioEditarUsuario">
+    <ScrollView>
+        <Grid BackgroundColor="White">
+            <StackLayout>
+                <Grid Margin="20">
+                    <Label Text="Modificar Perfil" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                </Grid>
+                <Grid Margin="20,0" RowDefinitions="30,45,30,45,30,45,30,45,30,45,30,45,30,45,30,45">
+                    <Label Text="Nombre(s):" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="0"/>
+                    <Label Text="{Binding Nombre}" FontSize="18" TextColor="Black" Grid.Row="1" BackgroundColor="LightGray"/>
+                    <Label Text="Apellido Paterno:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="2"/>
+                    <Label Text="{Binding ApellidoPaterno}" TextColor="Black" FontSize="18" Grid.Row="3" BackgroundColor="LightGray" />
+                    <Label Text="Apellido Materno:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="4"/>
+                    <Label Text="{Binding ApellidoMaterno}" TextColor="Black" FontSize="18" Grid.Row="5" BackgroundColor="LightGray"/>
+                    <Label Text="Fecha de Nacimiento:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="6" />
+                    <Label Text="{Binding FechaNacimiento}" TextColor="Black" FontSize="18" Grid.Row="7" BackgroundColor="LightGray"/>
+                    <Label Text="Telefono Local:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="8" />
+                    <Entry Text="{Binding TelefonoLocal}" TextColor="Black" FontSize="18" Grid.Row="9" BackgroundColor="LightGray" Keyboard="Numeric" />
+                    <Label Text="Telefono Celular:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="10" />
+                    <Entry Text="{Binding TelefonoCelular}" TextColor="Black" FontSize="18" Grid.Row="11" BackgroundColor="LightGray" Keyboard="Numeric"/>
+                    <Label Text="Domicilio:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="12"/>
+                    <Entry Text="{Binding Domicilio}" TextColor="Black" FontSize="18" Grid.Row="13" BackgroundColor="LightGray"/>
+                    <Label Text="Correo Electronico:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="14"/>
+                    <Entry Text="{Binding CorreoElectronico}" TextColor="Black" FontSize="15" Grid.Row="15" BackgroundColor="LightGray"/>
+
+                    <Button Margin="20" Text="Guardar Cambios" Command="{Binding GuardarCambiosCommand}" TextColor="White" Grid.Row="16"/>
+                </Grid>
+                
+                
+                
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+    
+</ContentPage>

@@ -5,4 +5,5 @@
             xmlns:local="clr-namespace:ControlMedico.View.ViewPaciente"
             NavigationPage.HasNavigationBar="False">
     <local:InicioPaciente Title="Inicio" IconImageSource="home.png"/>
+    <local:PerfilPaciente Title="Perfil" IconImageSource="profile.png"/>
 </TabbedPage>

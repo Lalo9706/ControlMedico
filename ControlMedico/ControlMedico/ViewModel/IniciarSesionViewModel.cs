@@ -75,21 +75,21 @@ namespace ControlMedico.ViewModel
                         if (usuario.TipoUsuario == MEDICO)
                         {
                             Settings.IdMedico = usuario.IdUsuario;
-                            Application.Current.MainPage.Navigation.PushAsync(new NavegacionMedico()); 
+                            await Application.Current.MainPage.Navigation.PushAsync(new NavegacionMedico()); 
                         }
                         if (usuario.TipoUsuario == PACIENTE)
                         {
                             Settings.IdPaciente = usuario.IdUsuario;
-                            Application.Current.MainPage.Navigation.PushAsync(new NavegacionPaciente());
+                            await Application.Current.MainPage.Navigation.PushAsync(new NavegacionPaciente());
                         }
                         UserDialogs.Instance.HideLoading();
-                        Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Bienvenido " + usuario.Nombre, "Aceptar");
+                        await Application.Current.MainPage.DisplayAlert("Inicio de Sesión", "Bienvenido " + usuario.Nombre, "Aceptar");
                     }
-                    else { UserDialogs.Instance.HideLoading(); Application.Current.MainPage.DisplayAlert("Datos incorrectos", "Verifique su información", "Aceptar"); }
+                    else { UserDialogs.Instance.HideLoading(); await Application.Current.MainPage.DisplayAlert("Datos incorrectos", "Verifique su información", "Aceptar"); }
                 }
-                else if (usuario == null) { Application.Current.MainPage.DisplayAlert("Error de conexión con el servidor", "No se pudo verificar su cuenta", "Aceptar"); }
+                else if (usuario == null) { await Application.Current.MainPage.DisplayAlert("Error de conexión con el servidor", "No se pudo verificar su cuenta", "Aceptar"); }
             }
-            else { Application.Current.MainPage.DisplayAlert("Campos vacios", "Ingresa tu correo y contraseña", "Aceptar"); }
+            else { await Application.Current.MainPage.DisplayAlert("Campos vacios", "Ingresa tu correo y contraseña", "Aceptar"); }
         }
 
         private void CrearCuenta()

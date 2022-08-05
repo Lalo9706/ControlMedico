@@ -11,9 +11,11 @@ namespace ControlMedico.Data.Repository
         #region QUERYS
 
         private static string QUERY_SELECT_REGISTRO_MEDICO = "SELECT * FROM registromedico WHERE idCita = @idCita";
+
         private static string QUERY_INSERT_REGISTRO_MEDICO =
             "INSERT INTO registromedico(edad, peso, altura, presionSanguinea, nivelGlucosa, diagnostico, tratamiento, idCita)" +
             " VALUES (@edad, @peso, @altura, @presionSanguinea, @nivelGlucosa, @diagnostico, @tratamiento, @idCita)";
+
         private static string QUERY_UPDATE_REGISTRO_MEDICO = "UPDATE registromedico SET " +
             " edad = @edad, peso = @peso, altura = @altura, presionSanguinea = @presionSanguinea, nivelGlucosa = @nivelGlucosa," +
             " diagnostico = @diagnostico, tratamiento = @tratamiento WHERE idRegistroMedico = @idRegistroMedico";

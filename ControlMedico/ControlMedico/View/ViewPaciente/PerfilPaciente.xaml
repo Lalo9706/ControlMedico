@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.ViewPaciente.PerfilPaciente">
+    <Grid BackgroundColor="White" >
+        <StackLayout>
+            <Grid Margin="20,20,20,0" RowDefinitions="30">
+                <Label Text="Mi Perfil" TextColor="Black" FontSize="20" FontAttributes="Bold" Grid.Row="0" HorizontalOptions="Center"/>
+            </Grid>
+            <Grid Margin="20,0" ColumnDefinitions="120">
+                <Label Text="Nombre(s):" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                <Label Text="{Binding Nombre}" TextColor="Blue" FontSize="20" FontAttributes="Italic" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label Text="Apellido Paterno:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                <Label Text="{Binding ApellidoPaterno}" TextColor="Blue" FontSize="20" FontAttributes="Italic" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                <Label Text="Apellido Materno:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                <Label Text="{Binding ApellidoMaterno}" TextColor="Blue" FontSize="20" FontAttributes="Italic" Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label Text="Fecha de Nacimiento:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
+                <Label Text="{Binding FechaNacimiento}" TextColor="Blue" FontSize="20" FontAttributes="Italic" Grid.Row="3" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label Text="Telefono Local:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="4" Grid.Column="0" VerticalOptions="Center"/>
+                <Label Text="{Binding TelefonoLocal}" TextColor="Blue" FontSize="20" FontAttributes="Italic" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                <Label Text="Telefono Celular:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="5" Grid.Column="0" VerticalOptions="Center" />
+                <Label Text="{Binding TelefonoCelular}" TextColor="Blue" FontSize="20" FontAttributes="Italic" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" />
+                <Label Text="Domicilio:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="6" Grid.Column="0" VerticalOptions="Center"/>
+                <Label Text="{Binding Domicilio}" TextColor="Blue" FontSize="18" FontAttributes="Italic" Grid.Row="6" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label Text="Correo Electronico:" TextColor="Black" FontSize="18" FontAttributes="Bold" Grid.Row="7" Grid.Column="0" VerticalOptions="Center"/>
+                <Label Text="{Binding CorreoElectronico}" TextColor="Blue" FontSize="15" FontAttributes="Italic" Grid.Row="7" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+            </Grid>
+            
+            <Button Text="Modificar Perfil" Command="{Binding ModificarPerfilCommand}" Margin="20" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

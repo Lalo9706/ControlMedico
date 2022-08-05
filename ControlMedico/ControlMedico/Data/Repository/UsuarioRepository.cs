@@ -22,6 +22,9 @@ namespace ControlMedico.Data.Repository
             "SELECT idPaciente, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefonoLocal, telefonoCelular, " +
             "domicilio, tipoUsuario, correoElectronico FROM usuario INNER JOIN medicopaciente ON usuario.idUsuario = medicopaciente.idPaciente WHERE medicopaciente.idMedico = @idMedico";
 
+        public static string QUERY_UPDATE_USUARIO =
+            "UPDATE usuario SET telefonoLocal = @telefonoLocal, telefonoCelular = @telefonoCelular, domicilio = @domicilio, correoElectronico = @correoElectronico WHERE idUsuario = @idUsuario";
+
         #endregion
 
 
@@ -111,6 +114,38 @@ namespace ControlMedico.Data.Repository
                 }
             }
             return usuario;
+        }
+
+        internal static int ActualizarUsuario(Usuario usuarioTemp)
+        {
+            int respuesta = 0;
+
+            MySqlConnection conexionBD = ConexionMySQL.ObtenerConexion();
+            if (conexionBD != null)
+            {
+                try
+                {
+                    MySqlCommand mySqlCommand = new MySqlCommand(QUERY_UPDATE_USUARIO, conexionBD);
+                    mySqlCommand.Parameters.AddWithValue("@telefonoLocal", usuarioTemp.TelefonoLocal);
+                    mySqlCommand.Parameters.AddWithValue("@telefonoCelular", usuarioTemp.TelefonoCelular);
+                    mySqlCommand.Parameters.AddWithValue("@domicilio", usuarioTemp.Domicilio);
+                    mySqlCommand.Parameters.AddWithValue("@correoElectronico", usuarioTemp.CorreoElectronico);
+                    mySqlCommand.Parameters.AddWithValue("@idUsuario", usuarioTemp.IdUsuario);
+
+                    mySqlCommand.Prepare();
+                    respuesta = mySqlCommand.ExecuteNonQuery();
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    conexionBD.Close();
+                }
+            }
+            return respuesta;
         }
 
         public static List<Usuario> RecuperarPacientesMedico(int idMedico)
