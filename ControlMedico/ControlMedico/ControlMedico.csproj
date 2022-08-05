@@ -72,6 +72,9 @@
     <EmbeddedResource Update="View\ViewMedico\Pacientes.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="View\ViewMedico\RegistrosMonitor.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\ViewPaciente\DetallesCitaPaciente.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
