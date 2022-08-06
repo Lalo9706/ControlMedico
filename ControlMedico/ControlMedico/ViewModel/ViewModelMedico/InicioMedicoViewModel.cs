@@ -124,6 +124,5 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #endregion
 
-
     }
 }

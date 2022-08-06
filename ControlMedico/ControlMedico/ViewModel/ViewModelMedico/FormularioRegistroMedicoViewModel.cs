@@ -26,7 +26,6 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #endregion
 
-
         #region Constructor
         public FormularioRegistroMedicoViewModel(Cita citaSeleccionada)
         {
@@ -200,10 +199,9 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Campos vacios", "Debe llenar todos los valores para guardar", "Aceptar");
-            }
-
-            #endregion
+            }     
 
         }
+        #endregion
     }
 }

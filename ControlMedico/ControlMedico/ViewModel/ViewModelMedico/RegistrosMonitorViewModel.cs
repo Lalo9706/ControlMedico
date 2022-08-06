@@ -77,7 +77,6 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #endregion
 
-
         #region Methods
 
         private void ActualizarRegistros()
@@ -103,6 +102,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
 
         #endregion
 
+        #region Constructor
         public RegistrosMonitorViewModel(string nombrePaciente, int idPacienteMonitoreado)
         {
             this.nombrePaciente = nombrePaciente;
@@ -111,6 +111,7 @@ namespace ControlMedico.ViewModel.ViewModelMedico
             ActualizarRegistros();
         }
 
-        
+        #endregion
+
     }
 }

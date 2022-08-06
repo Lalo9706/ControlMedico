@@ -29,7 +29,6 @@ namespace ControlMedico.ViewModel.ViewModelPaciente
 
         #endregion
 
-
         #region Properties
 
         public String Nombre
@@ -153,9 +152,6 @@ namespace ControlMedico.ViewModel.ViewModelPaciente
         }
 
         #endregion
-
-
-
 
         #region Constructor
         public FormularioEditarUsuarioViewModel()

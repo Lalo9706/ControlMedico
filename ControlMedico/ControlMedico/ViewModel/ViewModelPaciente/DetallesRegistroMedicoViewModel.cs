@@ -68,6 +68,7 @@ namespace ControlMedico.ViewModel.ViewModelPaciente
 
         #endregion
 
+        #region Constructor
         public DetallesRegistroMedicoViewModel(int idCita)
         {
             this.idCita = idCita;
@@ -80,5 +81,7 @@ namespace ControlMedico.ViewModel.ViewModelPaciente
             this.diagnostico = detalles.Diagnostico;
             this.tratamiento = detalles.Tratamiento;
         }
+
+        #endregion
     }
 }
