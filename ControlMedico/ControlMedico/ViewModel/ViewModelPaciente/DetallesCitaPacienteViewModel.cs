@@ -2,6 +2,7 @@
 using ControlMedico.Data.Model;
 using ControlMedico.Data.Repository;
 using ControlMedico.View.ViewMedico;
+using ControlMedico.View.ViewPaciente;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,7 +54,7 @@ namespace ControlMedico.ViewModel.ViewModelPaciente
             RegistroMedico registroTemp = RegistroMedicoRepository.RecuperarRegistroMedico(citaSeleccionada.IdCita);
             if (registroTemp.IdRegistroMedico > 0)
             {
-                //Application.Current.MainPage.Navigation.PushAsync(new RegistroMedicoPaciente(this.citaSeleccionada));
+                Application.Current.MainPage.Navigation.PushAsync(new DetallesRegistroMedico(this.citaSeleccionada.IdCita));
             }
             else
             {

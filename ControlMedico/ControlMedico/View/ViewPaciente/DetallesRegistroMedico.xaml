@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControlMedico.View.ViewPaciente.DetallesRegistroMedico">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Registro Medico del Paciente" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" Margin="0,30,0,30"/>
+
+                <Grid Margin="30,0" RowSpacing="5" ColumnDefinitions="180,50,70">
+                    <Label Text="Edad: " Grid.Row="0" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+                    <Label Text="{Binding Edad}" FontSize="18" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Años" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+
+                    <Label Text="Peso: " Grid.Row="1" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+                    <Label Text="{Binding Peso}" FontSize="20" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Kilos" Grid.Row="1" Grid.Column="2" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+
+                    <Label Text="Altura: " Grid.Row="2" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+                    <Label Text="{Binding Altura}" FontSize="18" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Metros" Grid.Row="2" Grid.Column="2" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+
+                    <Label Text="Presión Sanguinea: " Grid.Row="3" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+                    <Label Text="{Binding PresionSanguinea}" FontSize="18" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="PPM" Grid.Row="3" Grid.Column="2" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+
+                    <Label Text="Nivel de Glucosa: " Grid.Row="4" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+                    <Label Text="{Binding NivelGlucosa}" FontSize="18" Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="mg/dl" Grid.Row="4" Grid.Column="2" FontAttributes="Bold" FontSize="18" VerticalOptions="Center"/>
+
+
+                </Grid>
+                <Grid Margin="20" RowDefinitions="25,Auto,25,Auto">
+                    <Label Text="Diagnostico: " FontAttributes="Bold" Grid.Row="0"  FontSize="18" VerticalOptions="Center"/>
+                    <Label Grid.Row="1" FontSize="18" Text="{Binding Diagnostico, Mode=TwoWay}"/>
+
+                    <Label Text="Tratamiento: " FontAttributes="Bold" Grid.Row="2"  FontSize="18" VerticalOptions="Center"/>
+                    <Label Grid.Row="3" FontSize="18" Text="{Binding Tratamiento, Mode=TwoWay}"/>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
